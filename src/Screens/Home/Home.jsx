@@ -21,7 +21,7 @@ import {
   Settings,
 } from "lucide-react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import "../OnBoard/onBoard.CSS"
+import "../OnBoard/onBoard.css"
 import { useNavigate } from "react-router-dom"
 import { BrowserEdge } from "react-bootstrap-icons"
 import {

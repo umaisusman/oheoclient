@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { Search, Sun, Bell, ChevronDown, Menu, X } from "lucide-react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import logo from "../../images/logo.png"
+import logo from "../../images/Logo.png"
 import "./Navbar.css"
 import { useNavigate } from "react-router-dom"
 

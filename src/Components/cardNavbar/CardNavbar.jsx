@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Search, Sun, Bell, Menu, X, ChevronDown } from "lucide-react";
-import logo from '../../images/logo.png';
+import logo from '../../images/Logo.png';
 
 export default function CardNavbar() {
   const [isOpen, setIsOpen] = useState(false);
