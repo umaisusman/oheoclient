@@ -1,7 +1,16 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate()
+
+  const handlelogin  = () =>  {
+    navigate('/login')
+  }
+  const handleStart = () => {
+    navigate('/contact')
+  }
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm">
       <div className="container">
@@ -55,10 +64,10 @@ const Navbar = () => {
 
           {/* Login & Button */}
           <div className="d-flex align-items-center">
-            <a className="nav-link me-3" href="#">
+            <a className="nav-link me-3" href="#" onClick={handlelogin}>
               Log in
             </a>
-            <a className="btn btn-outline-dark rounded-pill px-4" href="#">
+            <a className="btn btn-outline-dark rounded-pill px-4" href="#" onClick={handleStart} >
               Start free trial
             </a>
           </div>

@@ -22,9 +22,9 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SignupPage />} />
-        <Route path="/Ohdev" element={<Homepage />} />
-        <Route path="/contact" element={<Secondlanding />} />
+        <Route path="/" element={<Homepage />} />
+        <Route path="/SignupCode" element={< SignupPage/>} />
+        <Route path="/StartFreeTrail" element={<Secondlanding />} />
         <Route path="/Signup" element={<SignupSecondPage />} />
         <Route path="/Login" element={<Signup />} />
         <Route path="/Logincode" element={<Signupcode />} />
