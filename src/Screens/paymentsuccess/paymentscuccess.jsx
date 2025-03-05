@@ -250,7 +250,7 @@ const paymentscuccess = () => {
                       }                      
 
                       try {
-                        const response = await fetch("http://localhost:5000/api/business/add-business", {
+                        const response = await fetch("https://oheo-server.vercel.app/api/business/add-business", {
                           method: "POST",
                           headers: {
                             "Content-Type": "application/json",

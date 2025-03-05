@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import { Home, ShoppingBag, Package, Users, Store, ShoppingCart, Globe, Link, HelpCircle, ChevronDown, ChevronLeft, ChevronRight, Menu, X, Settings } from "lucide-react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './OnBoard.css';
+import './onBoard.css';
 import { House, Bag, BoxSeam, People, Shop } from "react-bootstrap-icons";
 import { useNavigate } from 'react-router-dom';
 const OnBoard = () => {

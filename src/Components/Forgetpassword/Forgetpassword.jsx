@@ -69,7 +69,7 @@ const Forgetpassword = () => {
   
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/forgot-password",
+        "https://oheo-server.vercel.app/auth/forgot-password",
         { email: trimmedEmail }, 
         { headers: { "Content-Type": "application/json" } }
       );

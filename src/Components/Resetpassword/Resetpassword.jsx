@@ -151,7 +151,7 @@ const Resetpassword = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/auth/reset-password/${token}`,
+        `https://oheo-server.vercel.app/reset-password/${token}`,
         { newPassword: password },
         { headers: { "Content-Type": "application/json" } }
       );

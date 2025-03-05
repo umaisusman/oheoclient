@@ -29,7 +29,7 @@ const handleChange = (e) => {
 };
 const handleNext = async () => {
   try {
-    const response = await fetch("http://localhost:5000/api/business/create-payment-intent", {
+    const response = await fetch("https://oheo-server.vercel.app/api/business/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

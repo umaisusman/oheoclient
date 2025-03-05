@@ -92,7 +92,7 @@ const Signup = () => {
     try {
       localStorage.setItem("userEmail", email);
   
-      const response = await axios.post("http://localhost:5000/login-with-email", { email }, {
+      const response = await axios.post("https://oheo-server.vercel.app/login-with-email", { email }, {
         headers: { "Content-Type": "application/json" },
       });
   

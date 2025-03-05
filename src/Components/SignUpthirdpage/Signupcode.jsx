@@ -18,7 +18,9 @@
 //         "http://localhost:5000/verify-login-code", 
 //         { email: "aneeqgulzarofficial@gmail.com", code }, // Include the email
 //         {
-//           headers: { "Content-Type": "application/json" },
+//           headers: { "Content-Type": "application/json
+// 
+//" },
 //         }
 //       );
   
@@ -98,7 +100,7 @@ const Logincode = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5000/verify-login-code", { email, code }, {
+      const response = await axios.post("https://oheo-server.vercel.app/verify-login-code", { email, code }, {
         headers: { "Content-Type": "application/json" },
       });
 
@@ -115,7 +117,7 @@ const Logincode = () => {
 
   const fetchUserProfile = async (token) => {
     try {
-      const profileResponse = await axios.get("http://localhost:5000/profile", {
+      const profileResponse = await axios.get("https://oheo-server.vercel.app/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
 

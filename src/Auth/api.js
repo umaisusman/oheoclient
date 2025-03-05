@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Base API URL (change this for production)
-const API_URL = "http://localhost:5000/auth";  
+const API_URL = "https://oheo-server.vercel.app/auth";  
 const FRONTEND_URL = "http://localhost:5173"; // Change if frontend URL is different
 
 // User Signup
