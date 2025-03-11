@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import Loader from "./Components/Loader/Loader"; // Ensure correct path
+import Loader from "./Components/loader/loader"; 
 import SignupPage from "./Components/SignIn/SignIn";
 import SignupSecondPage from "./Components/SigninSecondpage/SignInSecond";
 import Signup from "./Components/SignUpthirdpage/SignUp";
@@ -18,7 +18,7 @@ import HomeDashoard from "./Screens/Home/Home";
 import Homepage from "./Screens/LandinPageScreens/HomePage/Homepage";
 import Secondlanding from "./Screens/LandinPageScreens/secondlandingpage/secondlandingpage";
 import HeroSection from "./Screens/dashboardmockup/Hero-section/hero-section";
-import SecondLandingoh from "./Screens/secondLanding/SecondLandingoh";
+import SecondLandingoh from "./Screens/secondLandingtoo/secondLandingoh";
 
 const AppContent = () => {
   const [loading, setLoading] = useState(false);
