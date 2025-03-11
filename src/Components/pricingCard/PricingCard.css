@@ -6,34 +6,25 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Apply hover effect only on the Standard Plan */
+.standard-box {
+    background-color: #351F51;
+    color: white;
+}
+
+.standard-box .text-muted {
+    color: #f8f9fa !important;
+}
+
+.standard-box .btn-primary-custom {
+    background-color: white;
+    color: #351F51;
+}
+
 .standard-box:hover {
     background-color: #351F51;
     color: white;
 }
 
-/* Ensure the muted text remains visible on hover */
-.standard-box:hover .text-muted {
-    color: #f8f9fa !important;
-}
-
-.standard-box:hover .text-light {
-    color: #f8f9fa !important;
-}
-
-/* Change button color when card is hovered */
-.standard-box:hover .btn-primary-custom {
-    background-color: white;
-    color: #351F51;
-}
-
-/* Prevent hover effects on Basic and Pro Plans */
-.no-hover:hover {
-    background-color: transparent !important;
-    color: inherit !important;
-}
-
-/* Custom button styling */
 .btn-primary-custom {
     background-color: #9D6CD4;
     color: white;
