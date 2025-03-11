@@ -11,14 +11,10 @@ export default function HeroSection() {
     <div className="bg-white min-h-screen">
       <Navbar expand="lg" className="py-3">
         <Container>
-          <Navbar.Brand href="#" className="d-flex align-items-center">
-            <div className="bg-black rounded-full p-1 me-2">
-              <div className="bg-white rounded-full p-0.5">
-                <div className="bg-black rounded-full w-4 h-4"></div>
-              </div>
-            </div>
-            <span className="fw-bold">oheo</span>
-          </Navbar.Brand>
+        <Navbar.Brand href="#" className="d-flex align-items-center">
+  <span className="fw-bold">oheo</span>
+</Navbar.Brand>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
