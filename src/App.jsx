@@ -10,7 +10,6 @@ import Forgetpassword from "./Components/Forgetpassword/Forgetpassword";
 import Resetpassword from "./Components/Resetpassword/Resetpassword";
 import OAuthHandler from "./Components/OAuthHandler";
 import OnBoard from "./Screens/OnBoard/OnBoard";
-import PaymentPlans from "./Screens/Payment/payment";
 import PricingPlans from "./Screens/Payment/payment";
 import CardDetails from "./Screens/CardDetails/CardDetails";
 import PaymentSuccess from "./Screens/paymentsuccess/paymentscuccess";
@@ -26,7 +25,7 @@ const AppContent = () => {
 
   useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 1500); // Ensures loader stays for a while
+    const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, [location]);
 
