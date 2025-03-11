@@ -1,0 +1,14 @@
+/* Custom colors for the purple theme */
+.bg-purple-100 {
+    background-color: rgba(149, 76, 233, 0.1);
+  }
+  
+  .bg-purple-500 {
+    background-color: #954ce9;
+  }
+  
+  .text-purple-500 {
+    color: #954ce9;
+  }
+  
+  

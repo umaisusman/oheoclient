@@ -17,12 +17,14 @@ import HomeDashoard from "./Screens/Home/Home";
 import ProtectedRoute from "./ProtectedRoute";
 import Homepage from "./Screens/LandinPageScreens/HomePage/Homepage";
 import Secondlanding from "./Screens/LandinPageScreens/secondlandingpage/secondlandingpage";
+import HeroSection from "./Screens/dashboardmockup/Hero-section/hero-section";
 
 export default function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/mockup" element={<HeroSection />} />
         <Route path="/SignupCode" element={< SignupPage/>} />
         <Route path="/StartFreeTrail" element={<Secondlanding />} />
         <Route path="/Signup" element={<SignupSecondPage />} />
