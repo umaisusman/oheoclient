@@ -17,7 +17,7 @@ import HomeDashoard from "./Screens/Home/Home";
 import Homepage from "./Screens/LandinPageScreens/HomePage/Homepage";
 import Secondlanding from "./Screens/LandinPageScreens/secondlandingpage/secondlandingpage";
 import HeroSection from "./Screens/dashboardmockup/Hero-section/hero-section";
-import SecondLandingoh from "./Screens/secondLandingtoo/secondLandingoh";
+import SecondLandingoh from "./Screens/secondLandingtoo/SecondLandingoh";
 
 const AppContent = () => {
   const [loading, setLoading] = useState(false);
