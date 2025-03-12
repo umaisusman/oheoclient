@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import Loader from "./Components/loader/loader"; 
+import Loader from "./Components/loader/Loader"; 
 import SignupPage from "./Components/SignIn/SignIn";
 import SignupSecondPage from "./Components/SigninSecondpage/SignInSecond";
 import Signup from "./Components/SignUpthirdpage/SignUp";
