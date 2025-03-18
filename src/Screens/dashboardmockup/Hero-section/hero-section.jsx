@@ -5,8 +5,14 @@ import FeaturesSection from "../../../Components/feature-section/feactureSection
 import TestimonialSection from "../../../Components/Testimonial/Testimonial";
 import BusinessBanner from "../../../Components/business-banner/business-banner";
 import Footer from "../../../Components/NewFooter/NewFooter";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+
+  const handletry = () => {
+    navigate('/StartFreeTrail')
+  }
   return (
     <div className="bg-white min-h-screen">
       <Navbar expand="lg" className="py-3">
@@ -25,7 +31,7 @@ export default function HeroSection() {
             </Nav>
             <div className="d-flex align-items-center">
               <Button variant="dark" size="sm" className="me-2 rounded-pill px-3">Sign In</Button>
-              <Button variant="outline-dark" size="sm" className="rounded-pill px-3">Try</Button>
+              <Button variant="outline-dark" size="sm" className="rounded-pill px-3" onClick={handletry}>Try</Button>
             </div>
           </Navbar.Collapse>
         </Container>

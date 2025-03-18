@@ -13,6 +13,15 @@ import videoFrame from "../../images/video transparent frame.png";
 
 export default function LandingPageNav() {
 
+  const navigate = useNavigate();
+  
+    const handletryNav = () => {
+      navigate('/')
+    }
+    const handletrylogin = () => {
+      navigate('/Login')
+    }
+
   return (
     <div >
        <Navbar expand="lg" className="py-3">
@@ -30,8 +39,8 @@ export default function LandingPageNav() {
               <Nav.Link href="#" className="mx-2">Resources</Nav.Link>
             </Nav>
             <div className="d-flex align-items-center">
-              <Button variant="dark" size="sm" className="me-2 rounded-pill px-3">Get Started</Button>
-              <Button variant="outline-dark" size="sm" className="rounded-pill px-3">Sign in</Button>
+              <Button variant="dark" size="sm" className="me-2 rounded-pill px-3" onClick={handletryNav}>Get Started</Button>
+              <Button variant="outline-dark" size="sm" className="rounded-pill px-3" onClick={handletrylogin}>Sign in</Button>
             </div>
           </Navbar.Collapse>
         </Container>
@@ -64,6 +73,7 @@ export default function LandingPageNav() {
             Choose the best plan for your business. Change plans as you grow.
                         </p>
             <Button
+             onClick={handletryNav}
               className="rounded-pill px-4 py-2 fw-semibold"
               style={{
                 backgroundColor: "#8A2BE2",
@@ -73,6 +83,7 @@ export default function LandingPageNav() {
               Get Started
             </Button>
             <Button
+             onClick={handletryNav}
               className="rounded-pill px-4 py-2 fw-semibold"
               style={{
                 backgroundColor: "#8A2BE2",

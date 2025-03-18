@@ -9,7 +9,7 @@ const Navbar = () => {
     navigate('/login')
   }
   const handleStart = () => {
-    navigate('/contact')
+    navigate('/mockup')
   }
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm">
