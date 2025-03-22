@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { ArrowRight } from "lucide-react";
 import { FaFigma, FaGoogle, FaInstagram, FaMailchimp, FaTwitter, FaFacebook, FaPinterest, FaDropbox, FaSlack, FaSnapchat } from "react-icons/fa";
 
 export default function IntegrationsPage() {
-  // Integration icons data
   const integrations = [
-    { name: "Figma", position: "top-left", icon: <FaFigma size={30} /> },
-    { name: "Google", position: "top", icon: <FaGoogle size={30} /> },
-    { name: "Instagram", position: "top-right", icon: <FaInstagram size={30} /> },
-    { name: "Mailchimp", position: "top-right-far", icon: <FaMailchimp size={30} /> },
-    { name: "Twitter", position: "left", icon: <FaTwitter size={30} /> },
-    { name: "Facebook", position: "right", icon: <FaFacebook size={30} /> },
-    { name: "Pinterest", position: "bottom-left", icon: <FaPinterest size={30} /> },
-    { name: "Dropbox", position: "bottom", icon: <FaDropbox size={30} /> },
-    { name: "Slack", position: "bottom-right", icon: <FaSlack size={30} /> },
-    { name: "Snapchat", position: "bottom-right-far", icon: <FaSnapchat size={30} /> },
+    { name: "Figma", position: "top-left", icon: <FaFigma />, color: "#F24E1E" },
+    { name: "Google", position: "top", icon: <FaGoogle />, color: "#4285F4" },
+    { name: "Instagram", position: "top-right", icon: <FaInstagram />, color: "#E4405F" },
+    { name: "Mailchimp", position: "top-right-far", icon: <FaMailchimp />, color: "#FFE01B" },
+    { name: "Twitter", position: "left", icon: <FaTwitter />, color: "#1DA1F2" },
+    { name: "Facebook", position: "right", icon: <FaFacebook />, color: "#1877F2" },
+    { name: "Pinterest", position: "bottom-left", icon: <FaPinterest />, color: "#E60023" },
+    { name: "Dropbox", position: "bottom", icon: <FaDropbox />, color: "#007EE5" },
+    { name: "Slack", position: "bottom-right", icon: <FaSlack />, color: "#4A154B" },
+    { name: "Snapchat", position: "bottom-right-far", icon: <FaSnapchat />, color: "#FFFC00" },
   ];
+
+  const [hoveredIcon, setHoveredIcon] = useState(null);
 
   return (
     <Container className="py-5 text-center">
@@ -28,7 +29,6 @@ export default function IntegrationsPage() {
       </h1>
 
       <div className="position-relative my-5" style={{ height: "400px" }}>
-        {/* Central icon */}
         <div
           className="position-absolute bg-white rounded-circle shadow-sm d-flex align-items-center justify-content-center"
           style={{
@@ -43,7 +43,6 @@ export default function IntegrationsPage() {
           <FaGoogle size={40} />
         </div>
 
-        {/* Integration icons */}
         {integrations.map((integration, index) => {
           let top = "50%";
           let left = "50%";
@@ -93,19 +92,27 @@ export default function IntegrationsPage() {
 
           return (
             <div
-              key={index}
-              className="position-absolute bg-white rounded-circle shadow-sm d-flex align-items-center justify-content-center"
-              style={{
-                width: "60px",
-                height: "60px",
-                top,
-                left,
-                transform: "translate(-50%, -50%)",
-                zIndex: 2,
-              }}
-            >
-              {integration.icon}
-            </div>
+            key={index}
+            className="position-absolute bg-white rounded-circle shadow-sm d-flex align-items-center justify-content-center"
+            style={{
+              width: "60px",
+              height: "60px",
+              top,
+              left,
+              transform: hoveredIcon === index ? "translate(-50%, -50%) scale(1.2)" : "translate(-50%, -50%)",
+              zIndex: 2,
+              transition: "transform 0.3s ease, background-color 0.3s ease",
+              backgroundColor: hoveredIcon === index ? integration.color + "20" : "white", // Light background tint on hover
+            }}
+            onMouseEnter={() => setHoveredIcon(index)}
+            onMouseLeave={() => setHoveredIcon(null)}
+          >
+            {React.cloneElement(integration.icon, {
+              size: 30,
+              color: hoveredIcon === index ? integration.color : "black",
+            })}
+          </div>
+          
           );
         })}
       </div>
