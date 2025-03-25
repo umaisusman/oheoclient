@@ -344,7 +344,7 @@ export default function ShopifyNavbar() {
                     <h4 className="fs-5 fw-medium mb-1">
                       <div className="d-flex align-items-center">
                         <Info size={16} className="me-2" />
-                        What is Shopify?
+                        What is Oheo?
                       </div>
                     </h4>
                     <p className="mb-0">How our commerce platform works</p>
@@ -353,7 +353,7 @@ export default function ShopifyNavbar() {
                     <h4 className="fs-5 fw-medium mb-1">
                       <div className="d-flex align-items-center">
                         <Sparkles size={16} className="me-2" />
-                        Shopify Editions
+                        Oheo Editions
                       </div>
                     </h4>
                     <p className="mb-0">New, innovative Shopify products</p>
