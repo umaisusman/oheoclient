@@ -14,7 +14,7 @@ const PricingPlans = () => {
     <div className="container py-5">
       <div className="row g-4">
         <div className="col-md-4">
-          <div className="card border-light p-3 pricing-box">
+          <div className="card  standard-box border-light p-3 pricing-box">
             <h5>Basic</h5>
             <p>Our Basic Plan is perfect for budding entrepreneurs...</p>
             <h4>$1<span className="text-muted price-small-text">/month for first 3 months</span></h4>
@@ -55,7 +55,7 @@ const PricingPlans = () => {
         </div>
 
         <div className="col-md-4">
-          <div className="card border-light p-3 pricing-box">
+          <div className="card standard-box border-light p-3 pricing-box">
             <h5>Pro Plan</h5>
             <p>For established businesses...</p>
             <h4>$1<span className="text-muted price-small-text">/month for first 3 months</span></h4>
