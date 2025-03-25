@@ -15,7 +15,7 @@ export default function OheoHubLanding() {
                 className="mb-3"
               />
             </div>
-            <h5 className="mb-3">Shopify</h5>
+            <h5 className="mb-3">Oheo</h5>
             <ul className="list-unstyled">
               <li className="mb-2">
                 <a href="#" className="text-white text-decoration-none">
@@ -94,7 +94,7 @@ export default function OheoHubLanding() {
             <ul className="list-unstyled">
               <li className="mb-2">
                 <a href="#" className="text-white text-decoration-none">
-                  Shopify.dev
+                Oheo.dev
                 </a>
               </li>
               <li className="mb-2">
