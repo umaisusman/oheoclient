@@ -1,92 +1,152 @@
-import { Container, Row, Col, Button, Nav, Navbar } from "react-bootstrap"
-import "bootstrap/dist/css/bootstrap.min.css"
 
+import Logo from '../../../images/Logo.png'
 export default function OheoHubLanding() {
   return (
-    <div className="min-vh-100 d-flex flex-column" style={{ backgroundColor: "#f8f9fa" }}>
-      {/* Header */}
-      <header className="py-3">
-        <Container>
-          <Row className="align-items-center">
-            <Col xs={12} md={6}>
-              <h5 className="mb-0" style={{ color: "#333" }}>
-                Info@yourmail.com
-              </h5>
-              <small className="text-muted d-block">No matter what happens • Every time it's a</small>
-            </Col>
-            <Col xs={12} md={6} className="text-md-end mt-3 mt-md-0">
-              <Button variant="outline-primary" className="rounded-pill px-4">
-                Get Started
-              </Button>
-            </Col>
-          </Row>
-        </Container>
-      </header>
-
-      {/* Navigation */}
-      <Navbar expand="lg" className="py-3" style={{ backgroundColor: "transparent" }}>
-        <Container>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#products" className="fw-bold">
-                Products
-              </Nav.Link>
-              <Nav.Link href="#pricing" className="fw-bold">
-                Pricing
-              </Nav.Link>
-              <Nav.Link href="#contact" className="fw-bold">
-                Contact Us
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-      {/* Main Content */}
-      <main className="flex-grow-1 d-flex align-items-center">
-        <Container>
-          <Row className="align-items-center">
-            <Col xs={12} md={8}>
-              <h1 className="display-1 fw-bold" style={{ fontSize: "5rem" }}>
-                OheoHub
-              </h1>
-            </Col>
-            <Col xs={12} md={4}>
-              <div className="p-4">
-                <h5 className="fw-bold">Office</h5>
-                <p className="text-muted">
-                  123 Example Street
-                  <br />
-                  City, State 12345
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </main>
-
-      {/* Footer */}
-      <footer className="py-3 border-top">
-        <Container>
-          <Row className="align-items-center">
-            <Col xs={12} md={6}>
-              <small className="text-muted">Copyright © 2023 OheoHub</small>
-            </Col>
-            <Col xs={12} md={6} className="text-md-end mt-2 mt-md-0">
-              <small>
-                <a href="#" className="text-decoration-none text-muted me-3">
-                  Privacy Policy
+    <footer className="bg-black text-white py-5">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-3 mb-4 mb-md-0">
+            <div className="mb-4">
+              <img
+                src={Logo}
+                alt="Oheo"
+                width={50}
+                height={50}
+                className="mb-3"
+              />
+            </div>
+            <h5 className="mb-3">Shopify</h5>
+            <ul className="list-unstyled">
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  About
                 </a>
-                <a href="#" className="text-decoration-none text-muted">
-                  Terms of Use
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Careers
                 </a>
-              </small>
-            </Col>
-          </Row>
-        </Container>
-      </footer>
-    </div>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Investors
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Press and Media
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Partners
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Affiliates
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Legal
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Service Status
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="col-md-3 mb-4 mb-md-0">
+            <h5 className="mb-3">Support</h5>
+            <ul className="list-unstyled">
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Merchant Support
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Help Center
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Hire a Partner
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Shopify Academy
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Shopify Community
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="col-md-3 mb-4 mb-md-0">
+            <h5 className="mb-3">Developers</h5>
+            <ul className="list-unstyled">
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Shopify.dev
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  API Documentation
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Dev Degree
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="col-md-3">
+            <h5 className="mb-3">Products</h5>
+            <ul className="list-unstyled">
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Shop
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Shop Pay
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Shopify Plus
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Shopify Fulfillment Network
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Linkpop
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none">
+                  Shopify for Enterprise
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   )
 }
 
