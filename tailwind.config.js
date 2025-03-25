@@ -18,6 +18,12 @@ module.exports = {
     },
     extend: {
       colors: {
+        shopify: {
+          green: "#008060",
+          light: "#f6f6f7",
+          dark: "#212326",
+          text: "#42474c",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -51,6 +57,16 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar-background))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
         payment: {
           primary: "#7C3AED",
           muted: "#F5F3FF",
@@ -65,7 +81,7 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        inter: ["Inter", "sans-serif"], // Added missing font family
+        inter: ["Inter", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -76,7 +92,11 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        fadeIn: {
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "fade-up": {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
@@ -84,7 +104,8 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fadeIn 0.3s ease-out forwards",
+        "fade-in": "fade-in 0.5s ease-out",
+        "fade-up": "fade-up 0.7s ease-out",
       },
     },
   },

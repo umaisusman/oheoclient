@@ -1,6 +1,13 @@
 
+import { useNavigate } from 'react-router-dom'
 import Logo from '../../../images/Logo.png'
+
+
 export default function OheoHubLanding() {
+  const navigate = useNavigate()
+  const handleAboutClick = () => {
+    navigate('/about')
+  }
   return (
     <footer className="bg-black text-white py-5">
       <div className="container">
@@ -18,7 +25,7 @@ export default function OheoHubLanding() {
             <h5 className="mb-3">Oheo</h5>
             <ul className="list-unstyled">
               <li className="mb-2">
-                <a href="#" className="text-white text-decoration-none">
+                <a href="#" className="text-white text-decoration-none" onClick={handleAboutClick}>
                   About
                 </a>
               </li>

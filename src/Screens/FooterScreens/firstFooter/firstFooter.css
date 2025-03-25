@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --shopify-light: #f6f6f7;
+  --shopify-green: #008060;
+  --shopify-dark: #212326;
+  --shopify-text: #42474c;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--shopify-text);
+  background-color: var(--shopify-light);
+  overflow-x: hidden;
+}
+
+.header-gradient {
+  background: radial-gradient(circle at center right, rgba(206, 227, 255, 0.7) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.card-custom {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.btn-shopify {
+  background-color: var(--shopify-green);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-shopify:hover {
+  background-color: #006e52;
+  color: white;
+}
+
+.btn-outline-shopify {
+  background-color: transparent;
+  color: var(--shopify-green);
+  border: 1px solid var(--shopify-green);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-shopify:hover {
+  background-color: var(--shopify-green);
+  color: white;
+}
+
+.feature-icon {
+  background-color: #ebf5f0;
+  color: var(--shopify-green);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.footer {
+  background-color: var(--shopify-dark);
+  color: white;
+  padding: 4rem 0;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+.footer h5 {
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: white;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-right: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.partner-badge {
+  display: inline-block;
+  background-color: #f3f3f3;
+  border-radius: 16px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--shopify-text);
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.animated-dots-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.section-divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 4rem 0;
+}
+
+.card-image {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating-image {
+  animation: float 4s ease-in-out infinite;
+}
+
+.profile-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid white;
+  position: absolute;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.profile-circle:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.profile-circle-1 {
+  top: 30%;
+  right: 35%;
+}
+
+.profile-circle-2 {
+  top: 10%;
+  right: 25%;
+}
+
+.profile-circle-3 {
+  bottom: 25%;
+  right: 30%;
+}
+
+.profile-circle-4 {
+  top: 45%;
+  right: 15%;
+}
+
+.search-input {
+  border-radius: 6px;
+  padding: 8px 16px;
+  border: 1px solid #e1e3e5;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--shopify-green);
+  box-shadow: 0 0 0 2px rgba(0, 128, 96, 0.2);
+}
+
+.nav-link {
+  color: var(--shopify-text);
+  font-weight: 500;
+  padding: 8px 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--shopify-green);
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+.dropdown-menu {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e3e5;
+  padding: 8px;
+  min-width: 200px;
+}
+
+.dropdown-item {
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+.dropdown-item:hover {
+  background-color: #f6f6f7;
+}
+
+.badge-primary {
+  background-color: #5c6ac4;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}

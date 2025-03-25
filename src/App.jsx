@@ -18,6 +18,7 @@ import Homepage from "./Screens/LandinPageScreens/HomePage/Homepage";
 import Secondlanding from "./Screens/LandinPageScreens/secondlandingpage/secondlandingpage";
 import HeroSection from "./Screens/dashboardmockup/Hero-section/hero-section";
 import SecondLandingoh from "./Screens/secondLandingtoo/SecondLandingoh";
+import FirstFooter from "./Screens/FooterScreens/firstFooter/firstFooter";
 
 const AppContent = () => {
   const [loading, setLoading] = useState(false);
@@ -36,6 +37,7 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/mockup" element={<HeroSection />} />
+          <Route path="/about" element={<FirstFooter />} />
           <Route path="/SignupCode" element={<SignupPage />} />
           <Route path="/mainpage" element={<SecondLandingoh />} />
           <Route path="/StartFreeTrail" element={<Secondlanding />} />
