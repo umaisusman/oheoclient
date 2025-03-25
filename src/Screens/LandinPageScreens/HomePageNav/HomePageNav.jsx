@@ -1,8 +1,22 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Logo from '../../../images/logo.png'
+import Logo from "../../../images/logo.png"
 import { useNavigate } from "react-router-dom"
+import {
+  ChevronDown,
+  Info,
+  HelpCircle,
+  BookOpen,
+  GraduationCapIcon as Graduation,
+  Pencil,
+  ShoppingBag,
+  Sparkles,
+  Users,
+  Search,
+  BarChart,
+  Share2,
+} from "lucide-react"
 
 export default function ShopifyNavbar() {
   const navigate = useNavigate()
@@ -17,13 +31,13 @@ export default function ShopifyNavbar() {
   }
 
   const handleLoginCLick = () => {
-    navigate('/login')
+    navigate("/login")
   }
 
   const handleMockCLick = () => {
-    navigate('/mockup')
+    navigate("/mockup")
   }
-  
+
   const toggleSolutions = () => {
     setIsSolutionsOpen(!isSolutionsOpen)
     setIsResourcesOpen(false)
@@ -70,25 +84,91 @@ export default function ShopifyNavbar() {
           }
         }
 
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+
         .dropdown-animation {
           animation: slideDown 0.3s ease-out;
         }
 
         .nav-button {
           transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
         }
 
         .nav-button:hover {
           transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button:active {
+          transform: translateY(0);
+        }
+
+        .nav-link {
+          transition: all 0.2s ease;
+          position: relative;
+        }
+
+        .nav-link:hover {
+          transform: translateY(-1px);
+        }
+
+        .nav-link:after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: white;
+          transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+          width: 100%;
+        }
+
+        .icon-container {
+          transition: all 0.3s ease;
+        }
+
+        .icon-container:hover {
+          transform: scale(1.1);
+        }
+
+        .dropdown-item-custom {
+          transition: all 0.2s ease;
+        }
+
+        .dropdown-item-custom:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          transform: translateX(5px);
+        }
+
+        .trial-button:hover {
+          animation: pulse 1s infinite;
+        }
+
+        .chevron-icon {
+          transition: transform 0.3s ease;
+        }
+
+        .chevron-rotate {
+          transform: rotate(180deg);
         }
       `}</style>
 
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#9A66F0' }}>
+        <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#9A66F0" }}>
           <div className="container">
             <a className="navbar-brand d-flex align-items-center me-4" href="#">
-              <div className="bg-white p-1 rounded me-2">
-                 <img src={Logo} alt="logo" style={{width: "40px"}}/>
+              <div className="bg-white p-1 rounded me-2 icon-container">
+                <img src={Logo || "/placeholder.svg"} alt="logo" style={{ width: "40px" }} />
               </div>
               <span className="fs-4 fw-bold text-white">Oheo</span>
             </a>
@@ -108,24 +188,23 @@ export default function ShopifyNavbar() {
                       toggleSolutions()
                     }}
                   >
-                    Solutions
-                    <svg
-                      className="ms-1"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
+                    <div className="d-flex align-items-center">
+                      <ShoppingBag className="me-1" size={18} />
+                      Solutions
+                      <ChevronDown
+                        className={`ms-1 chevron-icon ${isSolutionsOpen ? "chevron-rotate" : ""}`}
+                        size={18}
+                      />
+                    </div>
                   </a>
                 </li>
 
                 <li className="nav-item mx-2">
                   <a className="nav-link" href="#">
-                    Pricing
+                    <div className="d-flex align-items-center">
+                      <BarChart className="me-1" size={18} />
+                      Pricing
+                    </div>
                   </a>
                 </li>
 
@@ -138,24 +217,23 @@ export default function ShopifyNavbar() {
                       toggleResources()
                     }}
                   >
-                    Resources
-                    <svg
-                      className="ms-1"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
+                    <div className="d-flex align-items-center">
+                      <BookOpen className="me-1" size={18} />
+                      Resources
+                      <ChevronDown
+                        className={`ms-1 chevron-icon ${isResourcesOpen ? "chevron-rotate" : ""}`}
+                        size={18}
+                      />
+                    </div>
                   </a>
                 </li>
 
                 <li className="nav-item mx-2">
                   <a className="nav-link" href="#">
-                    Enterprise
+                    <div className="d-flex align-items-center">
+                      <Users className="me-1" size={18} />
+                      Enterprise
+                    </div>
                   </a>
                 </li>
 
@@ -168,32 +246,34 @@ export default function ShopifyNavbar() {
                       toggleWhatsNew()
                     }}
                   >
-                    What's new
-                    <svg
-                      className="ms-1"
-                      width="16"
-                      height="16"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
+                    <div className="d-flex align-items-center">
+                      <Sparkles className="me-1" size={18} />
+                      What's new
+                      <ChevronDown
+                        className={`ms-1 chevron-icon ${isWhatsNewOpen ? "chevron-rotate" : ""}`}
+                        size={18}
+                      />
+                    </div>
                   </a>
                 </li>
               </ul>
 
               <div className="ms-auto d-flex gap-3">
                 <button className="nav-button btn text-white border-white" onClick={handleLoginCLick}>
-                  Try
+                  <div className="d-flex align-items-center">
+                    <Search size={18} className="me-1" />
+                    Try
+                  </div>
                 </button>
-                <button 
+                <button
                   onClick={handleMockCLick}
-                  className="nav-button btn text-white" 
-                  style={{ backgroundColor: '#9A66F0', border: '1px solid white' }}
+                  className="nav-button btn text-white trial-button"
+                  style={{ backgroundColor: "#9A66F0", border: "1px solid white" }}
                 >
-                  Start Free Trial
+                  <div className="d-flex align-items-center">
+                    <Sparkles size={18} className="me-1" />
+                    Start Free Trial
+                  </div>
                 </button>
               </div>
             </div>
@@ -201,12 +281,12 @@ export default function ShopifyNavbar() {
         </nav>
 
         {(isResourcesOpen || isSolutionsOpen || isWhatsNewOpen) && (
-          <div 
-            className="position-absolute w-100 text-white shadow dropdown-animation" 
-            style={{ 
-              zIndex: 1000, 
-              backgroundColor: '#9A66F0',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+          <div
+            className="position-absolute w-100 text-white shadow dropdown-animation"
+            style={{
+              zIndex: 1000,
+              backgroundColor: "#9A66F0",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
             }}
           >
             <div className="container py-5">
@@ -214,23 +294,38 @@ export default function ShopifyNavbar() {
                 <div className="col-md-4 mb-4 mb-md-0">
                   <div className="d-flex align-items-center mb-4">
                     <div
-                      className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center"
+                      className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center icon-container"
                       style={{ width: 40, height: 40 }}
                     >
-                      <i className="bi bi-info fs-5"></i>
+                      <HelpCircle size={20} />
                     </div>
                     <h3 className="fs-4 fw-medium mb-0">Help and support</h3>
                   </div>
-                  <div className="mb-4">
-                    <h4 className="fs-5 fw-medium mb-1">Help and support</h4>
+                  <div className="mb-4 dropdown-item-custom">
+                    <h4 className="fs-5 fw-medium mb-1">
+                      <div className="d-flex align-items-center">
+                        <HelpCircle size={16} className="me-2" />
+                        Help and support
+                      </div>
+                    </h4>
                     <p className="mb-0">Get 24/7 support</p>
                   </div>
-                  <div className="mb-4">
-                    <h4 className="fs-5 fw-medium mb-1">How-to guides</h4>
+                  <div className="mb-4 dropdown-item-custom">
+                    <h4 className="fs-5 fw-medium mb-1">
+                      <div className="d-flex align-items-center">
+                        <BookOpen size={16} className="me-2" />
+                        How-to guides
+                      </div>
+                    </h4>
                     <p className="mb-0">Read in-depth business guides</p>
                   </div>
-                  <div className="mb-4">
-                    <h4 className="fs-5 fw-medium mb-1">Business courses</h4>
+                  <div className="mb-4 dropdown-item-custom">
+                    <h4 className="fs-5 fw-medium mb-1">
+                      <div className="d-flex align-items-center">
+                        <Graduation size={16} className="me-2" />
+                        Business courses
+                      </div>
+                    </h4>
                     <p className="mb-0">Learn from proven experts</p>
                   </div>
                 </div>
@@ -238,39 +333,69 @@ export default function ShopifyNavbar() {
                 <div className="col-md-4 mb-4 mb-md-0">
                   <div className="d-flex align-items-center mb-4">
                     <div
-                      className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center"
+                      className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center icon-container"
                       style={{ width: 40, height: 40 }}
                     >
-                      <i className="bi bi-pencil fs-5"></i>
+                      <Pencil size={20} />
                     </div>
                     <h3 className="fs-4 fw-medium mb-0">Popular topics</h3>
                   </div>
-                  <div className="mb-4">
-                    <h4 className="fs-5 fw-medium mb-1">What is Shopify?</h4>
+                  <div className="mb-4 dropdown-item-custom">
+                    <h4 className="fs-5 fw-medium mb-1">
+                      <div className="d-flex align-items-center">
+                        <Info size={16} className="me-2" />
+                        What is Shopify?
+                      </div>
+                    </h4>
                     <p className="mb-0">How our commerce platform works</p>
                   </div>
-                  <div className="mb-4">
-                    <h4 className="fs-5 fw-medium mb-1">Shopify Editions</h4>
+                  <div className="mb-4 dropdown-item-custom">
+                    <h4 className="fs-5 fw-medium mb-1">
+                      <div className="d-flex align-items-center">
+                        <Sparkles size={16} className="me-2" />
+                        Shopify Editions
+                      </div>
+                    </h4>
                     <p className="mb-0">New, innovative Shopify products</p>
                   </div>
-                  <div className="mb-4">
-                    <h4 className="fs-5 fw-medium mb-1">Founder stories</h4>
+                  <div className="mb-4 dropdown-item-custom">
+                    <h4 className="fs-5 fw-medium mb-1">
+                      <div className="d-flex align-items-center">
+                        <Users size={16} className="me-2" />
+                        Founder stories
+                      </div>
+                    </h4>
                     <p className="mb-0">Learn from successful merchants</p>
                   </div>
                 </div>
 
                 <div className="col-md-4">
                   <div className="pt-4 pt-md-5">
-                    <div className="mb-4">
-                      <h4 className="fs-5 fw-medium mb-1">Marketing</h4>
+                    <div className="mb-4 dropdown-item-custom">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <BarChart size={16} className="me-2" />
+                          Marketing
+                        </div>
+                      </h4>
                       <p className="mb-0">Build a marketing plan</p>
                     </div>
-                    <div className="mb-4">
-                      <h4 className="fs-5 fw-medium mb-1">Ecommerce SEO</h4>
+                    <div className="mb-4 dropdown-item-custom">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Search size={16} className="me-2" />
+                          Ecommerce SEO
+                        </div>
+                      </h4>
                       <p className="mb-0">Improve your search ranking</p>
                     </div>
-                    <div className="mb-4">
-                      <h4 className="fs-5 fw-medium mb-1">Social media strategy</h4>
+                    <div className="mb-4 dropdown-item-custom">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Share2 size={16} className="me-2" />
+                          Social media strategy
+                        </div>
+                      </h4>
                       <p className="mb-0">Turn social into sales</p>
                     </div>
                   </div>
@@ -283,3 +408,4 @@ export default function ShopifyNavbar() {
     </>
   )
 }
+
