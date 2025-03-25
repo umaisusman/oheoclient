@@ -2,12 +2,38 @@
 
 import { useState, useEffect } from "react"
 import Logo from '../../../images/logo.png'
+import { useNavigate } from "react-router-dom"
 
 export default function ShopifyNavbar() {
-  const [activeDropdown, setActiveDropdown] = useState(null)
+  const navigate = useNavigate()
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false)
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false)
+  const [isWhatsNewOpen, setIsWhatsNewOpen] = useState(false)
 
-  const toggleDropdown = (dropdown) => {
-    setActiveDropdown(activeDropdown === dropdown ? null : dropdown)
+  const toggleResources = () => {
+    setIsResourcesOpen(!isResourcesOpen)
+    setIsSolutionsOpen(false)
+    setIsWhatsNewOpen(false)
+  }
+
+  const handleLoginCLick = () => {
+    navigate('/login')
+  }
+
+  const handleMockCLick = () => {
+    navigate('/mockup')
+  }
+  
+  const toggleSolutions = () => {
+    setIsSolutionsOpen(!isSolutionsOpen)
+    setIsResourcesOpen(false)
+    setIsWhatsNewOpen(false)
+  }
+
+  const toggleWhatsNew = () => {
+    setIsWhatsNewOpen(!isWhatsNewOpen)
+    setIsResourcesOpen(false)
+    setIsSolutionsOpen(false)
   }
 
   useEffect(() => {
@@ -31,200 +57,229 @@ export default function ShopifyNavbar() {
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
         crossOrigin="anonymous"
       />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
       <style jsx global>{`
-        .navbar {
-          background: linear-gradient(135deg, #8e4df7 0%, #6d3dc2 100%);
-          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
-        .nav-link {
-          color: rgba(255,255,255,0.9) !important;
-          position: relative;
-          padding: 0.5rem 1rem !important;
+        .dropdown-animation {
+          animation: slideDown 0.3s ease-out;
+        }
+
+        .nav-button {
           transition: all 0.3s ease;
         }
 
-        .nav-link:hover {
-          color: white !important;
+        .nav-button:hover {
           transform: translateY(-2px);
-        }
-
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 0;
-          height: 2px;
-          background: white;
-          transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-          width: 100%;
-        }
-
-        .dropdown-menu-custom {
-          border: none;
-          border-radius: 15px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-          margin-top: 10px;
-          padding: 20px;
-          min-width: 800px;
-          left: 50% !important;
-          transform: translateX(-50%);
-        }
-
-        .feature-card {
-          transition: transform 0.3s ease;
-          padding: 15px;
-          border-radius: 10px;
-        }
-
-        .feature-card:hover {
-          transform: translateY(-5px);
-          background: rgba(255,255,255,0.05);
-        }
-
-        .icon-wrapper {
-          width: 50px;
-          height: 50px;
-          border-radius: 12px;
-          background: rgba(255,255,255,0.1);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 15px;
-        }
-
-        .btn-trial {
-          background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-          border: none;
-          border-radius: 25px;
-          padding: 8px 25px;
-          transition: all 0.3s ease;
-        }
-
-        .btn-trial:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(255,107,107,0.3);
         }
       `}</style>
 
-      <nav className="navbar navbar-expand-lg navbar-dark">
-        <div className="container">
-          <a className="navbar-brand d-flex align-items-center" href="#">
-            <div className="bg-white p-1 rounded me-2 shadow-sm">
-              <img src={Logo} alt="logo" style={{ width: "40px" }} />
-            </div>
-            <span className="fs-4 fw-bold text-white">Oheo</span>
-          </a>
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#9A66F0' }}>
+          <div className="container">
+            <a className="navbar-brand d-flex align-items-center me-4" href="#">
+              <div className="bg-white p-1 rounded me-2">
+                 <img src={Logo} alt="logo" style={{width: "40px"}}/>
+              </div>
+              <span className="fs-4 fw-bold text-white">Oheo</span>
+            </a>
 
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span className="navbar-toggler-icon"></span>
-          </button>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav mx-auto">
-              <li className="nav-item dropdown mx-2">
-                <a
-                  className="nav-link dropdown-toggle d-flex align-items-center"
-                  href="#"
-                  onClick={() => toggleDropdown('solutions')}
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item dropdown mx-2">
+                  <a
+                    className={`nav-link ${isSolutionsOpen ? "border-bottom border-white" : ""}`}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      toggleSolutions()
+                    }}
+                  >
+                    Solutions
+                    <svg
+                      className="ms-1"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </a>
+                </li>
+
+                <li className="nav-item mx-2">
+                  <a className="nav-link" href="#">
+                    Pricing
+                  </a>
+                </li>
+
+                <li className="nav-item dropdown mx-2">
+                  <a
+                    className={`nav-link ${isResourcesOpen ? "border-bottom border-white" : ""}`}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      toggleResources()
+                    }}
+                  >
+                    Resources
+                    <svg
+                      className="ms-1"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </a>
+                </li>
+
+                <li className="nav-item mx-2">
+                  <a className="nav-link" href="#">
+                    Enterprise
+                  </a>
+                </li>
+
+                <li className="nav-item dropdown mx-2">
+                  <a
+                    className={`nav-link ${isWhatsNewOpen ? "border-bottom border-white" : ""}`}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      toggleWhatsNew()
+                    }}
+                  >
+                    What's new
+                    <svg
+                      className="ms-1"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+
+              <div className="ms-auto d-flex gap-3">
+                <button className="nav-button btn text-white border-white" onClick={handleLoginCLick}>
+                  Try
+                </button>
+                <button 
+                  onClick={handleMockCLick}
+                  className="nav-button btn text-white" 
+                  style={{ backgroundColor: '#9A66F0', border: '1px solid white' }}
                 >
-                  <i className="bi bi-lightbulb me-2"></i>
-                  Solutions
-                </a>
-              </li>
-
-              <li className="nav-item mx-2">
-                <a className="nav-link d-flex align-items-center" href="#">
-                  <i className="bi bi-currency-dollar me-2"></i>
-                  Pricing
-                </a>
-              </li>
-
-              <li className="nav-item dropdown mx-2">
-                <a
-                  className="nav-link dropdown-toggle d-flex align-items-center"
-                  href="#"
-                  onClick={() => toggleDropdown('resources')}
-                >
-                  <i className="bi bi-journal-bookmark me-2"></i>
-                  Resources
-                </a>
-              </li>
-
-              <li className="nav-item mx-2">
-                <a className="nav-link d-flex align-items-center" href="#">
-                  <i className="bi bi-building me-2"></i>
-                  Enterprise
-                </a>
-              </li>
-
-              <li className="nav-item dropdown mx-2">
-                <a
-                  className="nav-link dropdown-toggle d-flex align-items-center"
-                  href="#"
-                  onClick={() => toggleDropdown('whatsnew')}
-                >
-                  <i className="bi bi-gift me-2"></i>
-                  What's New
-                </a>
-              </li>
-            </ul>
-
-            <div className="d-flex gap-3">
-              <button className="btn btn-outline-light rounded-pill px-4">
-                <i className="bi bi-rocket me-2"></i>1Try
-              </button>
-              <button className="btn btn-trial text-white">
-                Start Free Trial <i className="bi bi-arrow-right ms-2"></i>
-              </button>
+                  Start Free Trial
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      {activeDropdown && (
-        <div className="dropdown-menu-custom position-absolute start-0 end-0 bg-white animate__animated animate__fadeIn">
-          <div className="container py-4">
-            <div className="row g-4">
-              <div className="col-md-4">
-                <div className="feature-card">
-                  <div className="icon-wrapper bg-primary">
-                    <i className="bi bi-headset text-white fs-4"></i>
+        {(isResourcesOpen || isSolutionsOpen || isWhatsNewOpen) && (
+          <div 
+            className="position-absolute w-100 text-white shadow dropdown-animation" 
+            style={{ 
+              zIndex: 1000, 
+              backgroundColor: '#9A66F0',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            <div className="container py-5">
+              <div className="row">
+                <div className="col-md-4 mb-4 mb-md-0">
+                  <div className="d-flex align-items-center mb-4">
+                    <div
+                      className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center"
+                      style={{ width: 40, height: 40 }}
+                    >
+                      <i className="bi bi-info fs-5"></i>
+                    </div>
+                    <h3 className="fs-4 fw-medium mb-0">Help and support</h3>
                   </div>
-                  <h4 className="h5">24/7 Support</h4>
-                  <p className="text-muted">Round-the-clock assistance from our expert team</p>
+                  <div className="mb-4">
+                    <h4 className="fs-5 fw-medium mb-1">Help and support</h4>
+                    <p className="mb-0">Get 24/7 support</p>
+                  </div>
+                  <div className="mb-4">
+                    <h4 className="fs-5 fw-medium mb-1">How-to guides</h4>
+                    <p className="mb-0">Read in-depth business guides</p>
+                  </div>
+                  <div className="mb-4">
+                    <h4 className="fs-5 fw-medium mb-1">Business courses</h4>
+                    <p className="mb-0">Learn from proven experts</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="col-md-4">
-                <div className="feature-card">
-                  <div className="icon-wrapper bg-success">
-                    <i className="bi bi-book text-white fs-4"></i>
+                <div className="col-md-4 mb-4 mb-md-0">
+                  <div className="d-flex align-items-center mb-4">
+                    <div
+                      className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center"
+                      style={{ width: 40, height: 40 }}
+                    >
+                      <i className="bi bi-pencil fs-5"></i>
+                    </div>
+                    <h3 className="fs-4 fw-medium mb-0">Popular topics</h3>
                   </div>
-                  <h4 className="h5">Learning Hub</h4>
-                  <p className="text-muted">Master ecommerce with our curated resources</p>
+                  <div className="mb-4">
+                    <h4 className="fs-5 fw-medium mb-1">What is Shopify?</h4>
+                    <p className="mb-0">How our commerce platform works</p>
+                  </div>
+                  <div className="mb-4">
+                    <h4 className="fs-5 fw-medium mb-1">Shopify Editions</h4>
+                    <p className="mb-0">New, innovative Shopify products</p>
+                  </div>
+                  <div className="mb-4">
+                    <h4 className="fs-5 fw-medium mb-1">Founder stories</h4>
+                    <p className="mb-0">Learn from successful merchants</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="col-md-4">
-                <div className="feature-card">
-                  <div className="icon-wrapper bg-warning">
-                    <i className="bi bi-graph-up text-white fs-4"></i>
+                <div className="col-md-4">
+                  <div className="pt-4 pt-md-5">
+                    <div className="mb-4">
+                      <h4 className="fs-5 fw-medium mb-1">Marketing</h4>
+                      <p className="mb-0">Build a marketing plan</p>
+                    </div>
+                    <div className="mb-4">
+                      <h4 className="fs-5 fw-medium mb-1">Ecommerce SEO</h4>
+                      <p className="mb-0">Improve your search ranking</p>
+                    </div>
+                    <div className="mb-4">
+                      <h4 className="fs-5 fw-medium mb-1">Social media strategy</h4>
+                      <p className="mb-0">Turn social into sales</p>
+                    </div>
                   </div>
-                  <h4 className="h5">Analytics</h4>
-                  <p className="text-muted">Advanced insights to grow your business</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   )
 }
