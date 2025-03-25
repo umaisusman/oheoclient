@@ -1,375 +1,230 @@
 "use client"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.bundle.min"
-import {
-  FaUser,
-  FaPlayCircle,
-  FaTshirt,
-  FaShoppingCart,
-  FaTags,
-  FaBook,
-  FaChartLine,
-  FaStore,
-  FaGlobe,
-  FaEnvelope,
-  FaHeadset,
-  FaArrowRight,
-  FaRocket,
-  FaBullhorn,
-  FaChartBar,
-} from "react-icons/fa"
-import { useNavigate } from "react-router-dom"
 
-const ShopifyNavbar = () => {
-  const navigate = useNavigate()
+import { useState, useEffect } from "react"
+import Logo from '../../../images/logo.png'
 
-  const handleLogin = () => {
-    navigate("/login")
+export default function ShopifyNavbar() {
+  const [activeDropdown, setActiveDropdown] = useState(null)
+
+  const toggleDropdown = (dropdown) => {
+    setActiveDropdown(activeDropdown === dropdown ? null : dropdown)
   }
-  const handleStartFreeTrial = () => {
-    navigate("/mockup")
-  }
+
+  useEffect(() => {
+    const script = document.createElement("script")
+    script.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    script.integrity = "sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    script.crossOrigin = "anonymous"
+    script.async = true
+    document.body.appendChild(script)
+
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [])
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white px-4 shadow-sm">
-      <div className="container-fluid">
-        <a className="navbar-brand fw-bold fs-4 text-primary" href="#">
-          Oheo
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+    <>
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+        crossOrigin="anonymous"
+      />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-        <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <ul className="navbar-nav text-center">
-            {/* Product Dropdown */}
-            <li className="nav-item dropdown mx-2">
-              <a
-                className="nav-link dropdown-toggle fw-medium"
-                href="#"
-                id="startDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <FaStore className="me-2" />
-                Product
-              </a>
-              <ul className="dropdown-menu dropdown-menu-custom shadow border-0 p-3" aria-labelledby="startDropdown">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h6 className="dropdown-header text-primary">GET STARTED</h6>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaRocket className="me-2 text-primary" /> Start your business
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaBullhorn className="me-2 text-primary" /> Build your brand
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaGlobe className="me-2 text-primary" /> Create your website
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaStore className="me-2 text-primary" /> Online store editor
-                      </a>
-                    </li>
-                  </div>
-                  <div className="col-md-6">
-                    <h6 className="dropdown-header text-primary">CUSTOMIZE</h6>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaTshirt className="me-2 text-primary" /> Customize your store
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaBook className="me-2 text-primary" /> Store themes
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaChartBar className="me-2 text-primary" /> Find business apps
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaArrowRight className="me-2 text-primary" /> Practice & basics
-                      </a>
-                    </li>
-                  </div>
-                </div>
-                <div className="dropdown-divider my-3"></div>
-                <div className="bg-light p-3 rounded">
-                  <h6 className="mb-2">New Feature</h6>
-                  <p className="small mb-0">Check out our latest product updates and improvements!</p>
-                </div>
-              </ul>
-            </li>
+      <style jsx global>{`
+        .navbar {
+          background: linear-gradient(135deg, #8e4df7 0%, #6d3dc2 100%);
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
 
-            {/* Tribe Dropdown */}
-            <li className="nav-item dropdown mx-2">
-              <a
-                className="nav-link dropdown-toggle fw-medium"
-                href="#"
-                id="sellDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <FaShoppingCart className="me-2" />
-                Tribe
-              </a>
-              <ul className="dropdown-menu dropdown-menu-custom shadow border-0 p-3" aria-labelledby="sellDropdown">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h6 className="dropdown-header text-primary">SELL ONLINE</h6>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaShoppingCart className="me-2 text-primary" /> Sell your products
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaGlobe className="me-2 text-primary" /> Sell online or in person
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaUser className="me-2 text-primary" /> Check out customers
-                      </a>
-                    </li>
-                  </div>
-                  <div className="col-md-6">
-                    <h6 className="dropdown-header text-primary">GROW YOUR BUSINESS</h6>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaChartLine className="me-2 text-primary" /> Grow your business online
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaTags className="me-2 text-primary" /> Sell across channels
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaHeadset className="me-2 text-primary" /> Call in person
-                      </a>
-                    </li>
-                  </div>
-                </div>
-                <div className="dropdown-divider my-3"></div>
-                <div className="bg-light p-3 rounded">
-                  <h6 className="mb-2">Join Our Community</h6>
-                  <p className="small mb-0">Connect with other sellers and grow together!</p>
-                </div>
-              </ul>
-            </li>
+        .nav-link {
+          color: rgba(255,255,255,0.9) !important;
+          position: relative;
+          padding: 0.5rem 1rem !important;
+          transition: all 0.3s ease;
+        }
 
-            {/* Pricing Dropdown */}
-            <li className="nav-item dropdown mx-2">
-              <a
-                className="nav-link dropdown-toggle fw-medium"
-                href="#"
-                id="marketDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <FaGlobe className="me-2" />
-                Pricing
-              </a>
-              <ul className="dropdown-menu dropdown-menu-custom shadow border-0 p-3" aria-labelledby="marketDropdown">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h6 className="dropdown-header text-primary">MARKETING</h6>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaBullhorn className="me-2 text-primary" /> Market your business
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaUser className="me-2 text-primary" /> Reach & retain customers
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaGlobe className="me-2 text-primary" /> Market across social
-                      </a>
-                    </li>
-                  </div>
-                  <div className="col-md-6">
-                    <h6 className="dropdown-header text-primary">COMMUNICATION</h6>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaHeadset className="me-2 text-primary" /> Chat with customers
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaEnvelope className="me-2 text-primary" /> Shopify Email
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaChartBar className="me-2 text-primary" /> Know your audience
-                      </a>
-                    </li>
-                  </div>
-                </div>
-                <div className="dropdown-divider my-3"></div>
-                <div className="bg-light p-3 rounded">
-                  <h6 className="mb-2">Pricing Plans</h6>
-                  <p className="small mb-0">Find the perfect plan for your business needs!</p>
-                </div>
-              </ul>
-            </li>
+        .nav-link:hover {
+          color: white !important;
+          transform: translateY(-2px);
+        }
 
-            {/* Resources Dropdown */}
-            <li className="nav-item dropdown mx-2">
-              <a
-                className="nav-link dropdown-toggle fw-medium"
-                href="#"
-                id="manageDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <FaChartLine className="me-2" />
-                Resources
-              </a>
-              <ul className="dropdown-menu dropdown-menu-custom shadow border-0 p-3" aria-labelledby="manageDropdown">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h6 className="dropdown-header text-primary">BUSINESS MANAGEMENT</h6>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaChartLine className="me-2 text-primary" /> Manage your business
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaChartBar className="me-2 text-primary" /> Track sales & analytics
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaTags className="me-2 text-primary" /> Manage your finances
-                      </a>
-                    </li>
-                  </div>
-                  <div className="col-md-6">
-                    <h6 className="dropdown-header text-primary">PERFORMANCE</h6>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaChartBar className="me-2 text-primary" /> Measure performance
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaShoppingCart className="me-2 text-primary" /> Skip orders faster
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item rounded py-2" href="#">
-                        <FaHeadset className="me-2 text-primary" /> Customer support
-                      </a>
-                    </li>
-                  </div>
-                </div>
-                <div className="dropdown-divider my-3"></div>
-                <div className="bg-light p-3 rounded">
-                  <h6 className="mb-2">Learning Center</h6>
-                  <p className="small mb-0">Access guides, tutorials and resources to grow your business!</p>
-                </div>
-              </ul>
-            </li>
-          </ul>
-        </div>
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: white;
+          transition: width 0.3s ease;
+        }
 
-        <div className="d-flex gap-3">
-          <button className="btn btn-outline-primary rounded-pill px-4" onClick={handleLogin}>
-            <FaUser className="me-2" />
-            Login
-          </button>
-          <button className="btn btn-primary rounded-pill px-4 shadow-sm" onClick={handleStartFreeTrial}>
-            <FaPlayCircle className="me-2" />
-            Start Free Trial
-          </button>
-        </div>
-      </div>
+        .nav-link:hover::after {
+          width: 100%;
+        }
 
-      <style jsx>{`
         .dropdown-menu-custom {
-          min-width: 500px;
+          border: none;
+          border-radius: 15px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          margin-top: 10px;
+          padding: 20px;
+          min-width: 800px;
+          left: 50% !important;
+          transform: translateX(-50%);
+        }
+
+        .feature-card {
+          transition: transform 0.3s ease;
+          padding: 15px;
           border-radius: 10px;
-          animation: fadeIn 0.3s ease-in-out;
-          transform-origin: top center;
         }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+
+        .feature-card:hover {
+          transform: translateY(-5px);
+          background: rgba(255,255,255,0.05);
         }
-        
-        .dropdown-item {
-          transition: all 0.2s ease;
-        }
-        
-        .dropdown-item:hover {
-          background-color: rgba(13, 110, 253, 0.1);
-          transform: translateX(5px);
-        }
-        
-        .dropdown-header {
-          font-weight: 600;
-          letter-spacing: 0.5px;
-        }
-        
-        .nav-item.dropdown:hover .dropdown-menu {
-          display: block;
-        }
-        
-        .navbar-nav .nav-link {
+
+        .icon-wrapper {
+          width: 50px;
+          height: 50px;
+          border-radius: 12px;
+          background: rgba(255,255,255,0.1);
           display: flex;
           align-items: center;
-          padding: 0.8rem 1rem;
-          border-radius: 5px;
-          transition: all 0.2s ease;
+          justify-content: center;
+          margin-bottom: 15px;
         }
-        
-        .navbar-nav .nav-link:hover {
-          background-color: rgba(13, 110, 253, 0.1);
-          color: var(--bs-primary);
+
+        .btn-trial {
+          background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+          border: none;
+          border-radius: 25px;
+          padding: 8px 25px;
+          transition: all 0.3s ease;
         }
-        
-        .dropdown-divider {
-          border-color: rgba(0,0,0,0.05);
+
+        .btn-trial:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(255,107,107,0.3);
         }
       `}</style>
-    </nav>
+
+      <nav className="navbar navbar-expand-lg navbar-dark">
+        <div className="container">
+          <a className="navbar-brand d-flex align-items-center" href="#">
+            <div className="bg-white p-1 rounded me-2 shadow-sm">
+              <img src={Logo} alt="logo" style={{ width: "40px" }} />
+            </div>
+            <span className="fs-4 fw-bold text-white">Oheo</span>
+          </a>
+
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav mx-auto">
+              <li className="nav-item dropdown mx-2">
+                <a
+                  className="nav-link dropdown-toggle d-flex align-items-center"
+                  href="#"
+                  onClick={() => toggleDropdown('solutions')}
+                >
+                  <i className="bi bi-lightbulb me-2"></i>
+                  Solutions
+                </a>
+              </li>
+
+              <li className="nav-item mx-2">
+                <a className="nav-link d-flex align-items-center" href="#">
+                  <i className="bi bi-currency-dollar me-2"></i>
+                  Pricing
+                </a>
+              </li>
+
+              <li className="nav-item dropdown mx-2">
+                <a
+                  className="nav-link dropdown-toggle d-flex align-items-center"
+                  href="#"
+                  onClick={() => toggleDropdown('resources')}
+                >
+                  <i className="bi bi-journal-bookmark me-2"></i>
+                  Resources
+                </a>
+              </li>
+
+              <li className="nav-item mx-2">
+                <a className="nav-link d-flex align-items-center" href="#">
+                  <i className="bi bi-building me-2"></i>
+                  Enterprise
+                </a>
+              </li>
+
+              <li className="nav-item dropdown mx-2">
+                <a
+                  className="nav-link dropdown-toggle d-flex align-items-center"
+                  href="#"
+                  onClick={() => toggleDropdown('whatsnew')}
+                >
+                  <i className="bi bi-gift me-2"></i>
+                  What's New
+                </a>
+              </li>
+            </ul>
+
+            <div className="d-flex gap-3">
+              <button className="btn btn-outline-light rounded-pill px-4">
+                <i className="bi bi-rocket me-2"></i>1Try
+              </button>
+              <button className="btn btn-trial text-white">
+                Start Free Trial <i className="bi bi-arrow-right ms-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {activeDropdown && (
+        <div className="dropdown-menu-custom position-absolute start-0 end-0 bg-white animate__animated animate__fadeIn">
+          <div className="container py-4">
+            <div className="row g-4">
+              <div className="col-md-4">
+                <div className="feature-card">
+                  <div className="icon-wrapper bg-primary">
+                    <i className="bi bi-headset text-white fs-4"></i>
+                  </div>
+                  <h4 className="h5">24/7 Support</h4>
+                  <p className="text-muted">Round-the-clock assistance from our expert team</p>
+                </div>
+              </div>
+
+              <div className="col-md-4">
+                <div className="feature-card">
+                  <div className="icon-wrapper bg-success">
+                    <i className="bi bi-book text-white fs-4"></i>
+                  </div>
+                  <h4 className="h5">Learning Hub</h4>
+                  <p className="text-muted">Master ecommerce with our curated resources</p>
+                </div>
+              </div>
+
+              <div className="col-md-4">
+                <div className="feature-card">
+                  <div className="icon-wrapper bg-warning">
+                    <i className="bi bi-graph-up text-white fs-4"></i>
+                  </div>
+                  <h4 className="h5">Analytics</h4>
+                  <p className="text-muted">Advanced insights to grow your business</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
-
-export default ShopifyNavbar
-
