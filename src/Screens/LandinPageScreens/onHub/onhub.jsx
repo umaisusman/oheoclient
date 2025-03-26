@@ -11,6 +11,9 @@ export default function OheoHubLanding() {
   const handlecareerClick = () => {
     navigate('/career')
   }
+  const handleTermsClick = () => {
+    navigate('/Terms')
+  }
   return (
     <footer className="bg-black text-white py-5">
       <div className="container">
@@ -35,6 +38,11 @@ export default function OheoHubLanding() {
               <li className="mb-2">
                 <a href="#" className="text-white text-decoration-none" onClick={handlecareerClick}>
                   Careers
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-white text-decoration-none" onClick={handleTermsClick}>
+                  Terms of Service
                 </a>
               </li>
               <li className="mb-2">

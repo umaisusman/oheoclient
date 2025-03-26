@@ -1,0 +1,102 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  --transition-standard: all 0.3s ease;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.navbar {
+  padding: 1rem 2rem;
+  background-color: #000 !important;
+}
+
+.navbar-brand img {
+  height: 2rem;
+  transition: var(--transition-standard);
+}
+
+.navbar-brand img:hover {
+  opacity: 0.9;
+}
+
+.nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  transition: var(--transition-standard);
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.dropdown-toggle::after {
+  vertical-align: middle;
+}
+
+.btn-login {
+  color: #fff !important;
+  font-weight: 500;
+  transition: var(--transition-standard);
+}
+
+.btn-login:hover {
+  opacity: 0.8;
+}
+
+.btn-trial {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-radius: 50px !important;
+  padding: 0.6rem 1.5rem !important;
+  font-weight: 600;
+  transition: var(--transition-standard);
+}
+
+.btn-trial:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section {
+  background-color: #000;
+  padding: 5rem 0;
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+    padding: 0 1rem;
+  }
+  
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+}
