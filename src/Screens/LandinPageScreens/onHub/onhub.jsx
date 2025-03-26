@@ -135,7 +135,7 @@ export default function OheoHubLanding() {
               </li>
             </ul>
           </div>
-          <div className="col-md-3">
+          {/* <div className="col-md-3">
             <h5 className="mb-3">Products</h5>
             <ul className="list-unstyled">
               <li className="mb-2">
@@ -169,7 +169,7 @@ export default function OheoHubLanding() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

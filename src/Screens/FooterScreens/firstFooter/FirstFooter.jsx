@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from '../../../images/Logo.png'
-import Card1 from '../../../images/cardimage1.jpg'
-import Card2 from '../../../images/cardimage2.jpg'
-import Card3 from '../../../images/cardimage3.jpg'
-import Card4 from '../../../images/cardimage4.jpg'
-import Card5 from '../../../images/cardimage5.jpg'
-import Card6 from '../../../images/cardimage6.jpg'
-import './firstFooter.css';
+import LCD from '../../../images/LCD.jpg'
+import House from '../../../images/House.jpg'
+import Blocks from '../../../images/Blocks.jpg'
+import Flag from '../../../images/Flag.jpg'
+import circle from '../../../images/circle.jpg'
+import Bottles from '../../../images/Bottles.jpg'
+import './First.css';
 import Footer from "../../../Components/NewFooter/NewFooter";
 import OheoHubLanding from "../../LandinPageScreens/onHub/onhub";
 const FirstFooter = () => {
@@ -149,7 +149,7 @@ const FirstFooter = () => {
           <div className="row g-4">
             <div className="col-md-4">
               <div className="card card-custom shadow-sm border-0">
-                <div className="card-image" style={{ backgroundImage: `url(${Card2})` }}></div>
+                <div className="card-image" style={{ backgroundImage: `url(${LCD})` }}></div>
                 <div className="card-body p-4">
                   <h5 className="card-title fw-bold">Store build or redesign</h5>
                   <p className="card-text text-secondary">Partner will design and develop your store from start to finish, bringing your brand vision to life.</p>
@@ -160,7 +160,7 @@ const FirstFooter = () => {
 
             <div className="col-md-4">
               <div className="card card-custom shadow-sm border-0">
-                <div className="card-image" style={{ backgroundImage: `url(${Card1})` }}></div>
+                <div className="card-image" style={{ backgroundImage: `url(${House})` }}></div>
                 <div className="card-body p-4">
                   <h5 className="card-title fw-bold">Theme customization</h5>
                   <p className="card-text text-secondary">For businesses that want a custom theme that reflects their brand and enhances your customer's experience.</p>
@@ -171,7 +171,7 @@ const FirstFooter = () => {
 
             <div className="col-md-4">
               <div className="card card-custom shadow-sm border-0">
-                <div className="card-image" style={{ backgroundImage: `url(${Card3})` }}></div>
+                <div className="card-image" style={{ backgroundImage: `url(${Blocks})` }}></div>
                 <div className="card-body p-4">
                   <h5 className="card-title fw-bold">Custom app integrations</h5>
                   <p className="card-text text-secondary">Get everything working together. Build a custom app, integrate apps, or connect to other systems.</p>
@@ -182,7 +182,7 @@ const FirstFooter = () => {
 
             <div className="col-md-4">
               <div className="card card-custom shadow-sm border-0">
-                <div className="card-image" style={{ backgroundImage: `url(${Card4})` }}></div>
+                <div className="card-image" style={{ backgroundImage: `url(${Flag})` }}></div>
                 <div className="card-body p-4">
                   <h5 className="card-title fw-bold">Troubleshooting</h5>
                   <p className="card-text text-secondary">Resolve any errors or issues in your store.</p>
@@ -193,7 +193,7 @@ const FirstFooter = () => {
 
             <div className="col-md-4">
               <div className="card card-custom shadow-sm border-0">
-                <div className="card-image" style={{ backgroundImage: `url(${Card5})` }}></div>
+                <div className="card-image" style={{ backgroundImage: `url(${circle})` }}></div>
                 <div className="card-body p-4">
                   <h5 className="card-title fw-bold">Website audit and optimization strategy</h5>
                   <p className="card-text text-secondary">Improve your store's performance with a comprehensive website audit.</p>
@@ -204,7 +204,7 @@ const FirstFooter = () => {
 
             <div className="col-md-4">
               <div className="card card-custom shadow-sm border-0">
-                <div className="card-image" style={{ backgroundImage: `url(${Card6})` }}></div>
+                <div className="card-image" style={{ backgroundImage: `url(${Bottles})` }}></div>
                 <div className="card-body p-4">
                   <h5 className="card-title fw-bold">Product and collection setup</h5>
                   <p className="card-text text-secondary">Set up your products, collections, and optimize them for better visibility.</p>
