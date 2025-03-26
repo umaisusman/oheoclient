@@ -18,11 +18,12 @@ import Homepage from "./Screens/LandinPageScreens/HomePage/Homepage";
 import Secondlanding from "./Screens/LandinPageScreens/secondlandingpage/secondlandingpage";
 import HeroSection from "./Screens/dashboardmockup/Hero-section/hero-section";
 import SecondLandingoh from "./Screens/secondLandingtoo/SecondLandingoh";
-import FirstFooter from "./Screens/FooterScreens/firstFooter/firstFooter";
 import Career from "./Screens/FooterScreens/Career/Career";
+
 import PrivacyPolicys from "./Screens/FooterScreens/PrivacyPolicy/PrivacyPolicy";
 import Terms from "./Screens/Terms/Terms";
 import PrivacyControls from "./Screens/PrivacyControls/PrivacyControls";
+import FirstFooter from "./Screens/FooterScreens/FirstFooter/FirstFooters";
 
 const AppContent = () => {
   const [loading, setLoading] = useState(false);
