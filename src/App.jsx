@@ -22,6 +22,7 @@ import FirstFooter from "./Screens/FooterScreens/firstFooter/firstFooter";
 import Career from "./Screens/FooterScreens/Career/Career";
 import PrivacyPolicys from "./Screens/FooterScreens/PrivacyPolicy/PrivacyPolicy";
 import Terms from "./Screens/Terms/Terms";
+import PrivacyControls from "./Screens/PrivacyControls/PrivacyControls";
 
 const AppContent = () => {
   const [loading, setLoading] = useState(false);
@@ -43,6 +44,7 @@ const AppContent = () => {
           <Route path="/about" element={<FirstFooter />} />
           <Route path="/career" element={<Career />} />
           <Route path="/Terms" element={<Terms />} />
+          <Route path="/PrivacyControl" element={<PrivacyControls />} />
           <Route path="/privacy" element={<PrivacyPolicys />} />
           <Route path="/SignupCode" element={<SignupPage />} />
           <Route path="/mainpage" element={<SecondLandingoh />} />
