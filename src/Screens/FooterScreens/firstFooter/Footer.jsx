@@ -10,6 +10,7 @@ import Bottles from '../../../images/Bottles.jpg'
 import './First.css';
 import Footer from "../../../Components/NewFooter/NewFooter";
 import OheoHubLanding from "../../LandinPageScreens/onHub/onhub";
+import ShopifyNavbar from "../../LandinPageScreens/HomePageNav/HomePageNav";
 const FirstFooter = () => {
   useEffect(() => {
     // Adding Bootstrap JS
@@ -27,65 +28,7 @@ const FirstFooter = () => {
   return (
     <div className="shopify-partners">
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg bg-white py-3 border-bottom">
-        <div className="container">
-          <a className="navbar-brand" href="#">
-              <span>Oheo</span>
-            </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarContent"
-            aria-controls="navbarContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Browse
-                </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Category 1</a></li>
-                  <li><a className="dropdown-item" href="#">Category 2</a></li>
-                  <li><a className="dropdown-item" href="#">Category 3</a></li>
-                </ul>
-              </li>
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Services
-                </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Service 1</a></li>
-                  <li><a className="dropdown-item" href="#">Service 2</a></li>
-                  <li><a className="dropdown-item" href="#">Service 3</a></li>
-                </ul>
-              </li>
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Locations
-                </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Location 1</a></li>
-                  <li><a className="dropdown-item" href="#">Location 2</a></li>
-                  <li><a className="dropdown-item" href="#">Location 3</a></li>
-                </ul>
-              </li>
-            </ul>
-            <div className="d-flex align-items-center gap-3">
-              <div className="position-relative">
-                <input type="text" className="search-input" placeholder="Search by service, agency, expertise, etc." />
-              </div>
-              <a href="#" className="btn btn-shopify">Log in</a>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+      <ShopifyNavbar/>
       {/* Header Banner */}
       <div className="bg-white py-3">
         <div className="container">
