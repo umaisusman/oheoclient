@@ -6,6 +6,7 @@ import TestimonialSection from "../../../Components/Testimonial/Testimonial";
 import BusinessBanner from "../../../Components/business-banner/business-banner";
 import Footer from "../../../Components/NewFooter/NewFooter";
 import { useNavigate } from "react-router-dom";
+import ShopifyNavbar from "../../LandinPageScreens/HomePageNav/HomePageNav";
 
 export default function HeroSection() {
   const navigate = useNavigate();
@@ -15,27 +16,7 @@ export default function HeroSection() {
   }
   return (
     <div className="bg-white min-h-screen">
-      <Navbar expand="lg" className="py-3">
-        <Container>
-        <Navbar.Brand href="#" className="d-flex align-items-center">
-  <span className="fw-bold">oheo</span>
-</Navbar.Brand>
-
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mx-auto">
-              <Nav.Link href="#" className="mx-2">Home</Nav.Link>
-              <Nav.Link href="#" className="mx-2">About</Nav.Link>
-              <Nav.Link href="#" className="mx-2">Features</Nav.Link>
-              <Nav.Link href="#" className="mx-2">Pricing</Nav.Link>
-            </Nav>
-            <div className="d-flex align-items-center">
-              <Button variant="dark" size="sm" className="me-2 rounded-pill px-3">Sign In</Button>
-              <Button variant="outline-dark" size="sm" className="rounded-pill px-3" onClick={handletry}>Try</Button>
-            </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <ShopifyNavbar/>
 
       <Container className="py-5">
         <Row className="align-items-center">

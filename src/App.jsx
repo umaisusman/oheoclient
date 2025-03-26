@@ -23,7 +23,7 @@ import Career from "./Screens/FooterScreens/Career/Career";
 import PrivacyPolicys from "./Screens/FooterScreens/PrivacyPolicy/PrivacyPolicy";
 import Terms from "./Screens/Terms/Terms";
 import PrivacyControls from "./Screens/PrivacyControls/PrivacyControls";
-import FirstFooter from "./Screens/FooterScreens/FirstFooter/FirstFooters";
+import FirstFooter from "./Screens/FooterScreens/FirstFooter/Footer";
 
 const AppContent = () => {
   const [loading, setLoading] = useState(false);
