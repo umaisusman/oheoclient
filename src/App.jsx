@@ -21,9 +21,9 @@ import SecondLandingoh from "./Screens/secondLandingtoo/SecondLandingoh";
 import Career from "./Screens/FooterScreens/Career/Career";
 
 import PrivacyPolicys from "./Screens/FooterScreens/PrivacyPolicy/PrivacyPolicy";
-import Terms from "./Screens/Terms/Terms";
+import Terms from "./Screens/TermsCondition/Terms";
 import PrivacyControls from "./Screens/PrivacyControls/PrivacyControls";
-import FirstFooter from "./Screens/FooterScreens/FirstFooter/Footer";
+import FirstFooter from "./Screens/FooterScreens/firstFooter/Footer";
 
 const AppContent = () => {
   const [loading, setLoading] = useState(false);
