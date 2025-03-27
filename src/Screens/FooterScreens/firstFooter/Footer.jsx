@@ -4,7 +4,7 @@ import Logo from '../../../images/Logo.png'
 import LCD from '../../../images/LCD.jpg'
 import House from '../../../images/House.jpg'
 import Blocks from '../../../images/Blocks.jpg'
-import Flag from '../../../images/Flag.jpg'
+import Flag from '../../../images/FLag.jpg'
 import circle from '../../../images/circle.jpg'
 import Bottles from '../../../images/Bottles.jpg'
 import './First.css';
