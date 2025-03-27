@@ -21,7 +21,7 @@ import SecondLandingoh from "./Screens/secondLandingtoo/SecondLandingoh";
 import Career from "./Screens/FooterScreens/Career/Career";
 
 import PrivacyPolicys from "./Screens/FooterScreens/PrivacyPolicy/PrivacyPolicy";
-import Terms from "./Screens/TermsCondition/Terms";
+import Terms from "./Screens/Terms/TermsCondition/Terms";
 import PrivacyControls from "./Screens/PrivacyControls/PrivacyControls";
 import FirstFooter from "./Screens/FooterScreens/firstFooter/Footer";
 
