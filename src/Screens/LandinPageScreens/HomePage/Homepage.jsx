@@ -32,8 +32,14 @@ export default function HeroSection() {
                 <span className="d-none d-md-block"></span> Purposeful Impact on Cheo.
               </p>
               <div className="d-flex justify-content-center gap-2">
-                <button className="btn btn-primary px-3 px-md-4 py-2">Get Started</button>
-                <button className="btn btn-outline-primary px-3 px-md-4 py-2">Learn More</button>
+                <button className="btn  px-3 px-md-4 py-2" style={{
+                  backgroundColor: "#351F51",
+                  color: "white"
+                }}>Get Started</button>
+                <button className="btn  px-3 px-md-4 py-2" style={{
+                  backgroundColor: "#6B3FA0",
+                  color: "white"
+                }}>Learn More</button>
               </div>
             </div>
           </div>

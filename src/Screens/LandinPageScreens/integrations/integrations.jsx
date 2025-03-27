@@ -25,7 +25,11 @@ export default function IntegrationsPage() {
       <h1 className="display-4 fw-bold mb-4">
         Make productivity easier
         <br />
-        with <span className="text-primary">50+ Integrations</span>
+        with <span className="" style={
+          {
+            color: "#8A70D6"
+          }
+        }>50+ Integrations</span>
       </h1>
 
       <div className="position-relative my-5" style={{ height: "400px" }}>

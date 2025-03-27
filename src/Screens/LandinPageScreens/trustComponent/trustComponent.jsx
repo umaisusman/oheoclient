@@ -63,7 +63,12 @@ export default function LandingPage() {
               <span>Secure and certified by trusted authorities</span>
             </div>
           </div>
-          <Button variant="outline-primary" className="rounded-pill px-4 py-2">
+          <Button  className="rounded-pill px-4 py-2" style={{
+            backgroundColor: "#351F51",
+            outline: "none",
+            border: "none",
+            color: "white"
+          }}>
             Get Started Today <span className="ms-2">→</span>
           </Button>
         </Col>
