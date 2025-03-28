@@ -1,9 +1,9 @@
 import { Col, Row, Container } from "react-bootstrap"
 import PricingPlans from "../../../Components/pricingCard/PricingCard"
 
-const PaymentPlansSection = () => {
+const PaymentPlansSection = ({ id }) => {
     return (
-        <section className="payment-plans-section py-5">
+        <section className="payment-plans-section py-5" id={id}>
             <Container>
                 <Row className="justify-content-center">
                     <Col md={8} className="text-center">

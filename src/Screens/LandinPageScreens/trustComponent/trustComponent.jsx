@@ -19,7 +19,7 @@ export default function LandingPage() {
             </div>
             <div className="company-logo">
               <span className="dot"></span>
-              <span>Shopify</span>
+              <span>Oheo</span>
             </div>
             <div className="company-logo">
               <span className="dot"></span>

@@ -16,3 +16,13 @@
 }
 
 
+.nav-links {
+    color: var(--shopify-text);
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links:hover {
+    color: var(--shopify-green);
+  }

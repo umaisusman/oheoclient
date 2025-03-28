@@ -18,7 +18,7 @@ const PrivacyControls = () => {
             <div className="language-selector">
               <span className="me-2">🌐</span>
               English
-              <span className="ms-4">shopify.com</span>
+              <span className="ms-4">Oheo.com</span>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ const PrivacyControls = () => {
         {/* Hero Section */}
         <section className="mt-5">
           <h1 className="main-heading">Privacy controls</h1>
-          <p className="subheading">Control how Shopify uses your data</p>
+          <p className="subheading">Control how Oheo uses your data</p>
         </section>
 
         {/* Manage Your Data Section */}
@@ -38,8 +38,8 @@ const PrivacyControls = () => {
             <p className="section-title mb-1">TAKE ACTION</p>
             <h2 className="manage-heading">Manage your data</h2>
             <p>
-              Shopify gives you choices when it comes to the collection and use of your personal data. In certain circumstances, such as where 
-              Shopify acts as processor or service provider of your personal data on behalf of Shopify merchants, you may be directed to make 
+              Oheo gives you choices when it comes to the collection and use of your personal data. In certain circumstances, such as where 
+              Oheo acts as processor or service provider of your personal data on behalf of Oheo merchants, you may be directed to make 
               these requests to the applicable merchant.
             </p>
           </div>
@@ -53,7 +53,7 @@ const PrivacyControls = () => {
                 </div>
                 <h3 className="card-title">Access data</h3>
                 <p className="card-text">
-                  I want to receive a copy of certain personal data that Shopify has about me.
+                  I want to receive a copy of certain personal data that Oheo has about me.
                 </p>
                 <button className="shopify-btn">Access my data</button>
               </div>
@@ -67,7 +67,7 @@ const PrivacyControls = () => {
                 </div>
                 <h3 className="card-title">Erase data</h3>
                 <p className="card-text">
-                  I want to erase certain personal data Shopify has about me.
+                  I want to erase certain personal data Oheo has about me.
                 </p>
                 <button className="shopify-btn">Erase my data</button>
               </div>
@@ -79,9 +79,9 @@ const PrivacyControls = () => {
                 <div className="card-icon">
                 <img src={hand} alt="" />
                 </div>
-                <h3 className="card-title">Exclude my personal data from Shopify Audiences</h3>
+                <h3 className="card-title">Exclude my personal data from Oheo Audiences</h3>
                 <p className="card-text">
-                  I want to exclude my personal data from being used for Shopify Audiences by all merchants.
+                  I want to exclude my personal data from being used for Oheo Audiences by all merchants.
                 </p>
                 <button className="shopify-btn">Exclude my data</button>
               </div>
@@ -93,7 +93,7 @@ const PrivacyControls = () => {
                 <div className="card-icon">
                 <img src={hand} alt="" />
                 </div>
-                <h3 className="card-title">Users of Shopify's consumer services: opt out of sharing my personal data</h3>
+                <h3 className="card-title">Users of Oheo's consumer services: opt out of sharing my personal data</h3>
                 <p className="card-text">
                   Don't share my personal data for targeted advertising.
                 </p>
@@ -105,8 +105,8 @@ const PrivacyControls = () => {
           {/* Info Alert */}
           <div className="info-alert">
             <p>
-              <strong>Have a merchant account?</strong> For Shopify merchants, you can correct and export most information yourself at any time directly 
-              within your Shopify account. If you need assistance with this, please contact our 24/7 <a href="#">Shopify Help Center</a>.
+              <strong>Have a merchant account?</strong> For Oheo merchants, you can correct and export most information yourself at any time directly 
+              within your Oheo account. If you need assistance with this, please contact our 24/7 <a href="#">Oheo Help Center</a>.
             </p>
           </div>
         </section>
@@ -118,7 +118,7 @@ const PrivacyControls = () => {
           <p className="section-title mb-1">RESOURCES</p>
           <h2>Learn how your data is handled</h2>
           <p className="mb-5">
-            Trust is the foundation of the Shopify platform and includes trusting us to do the right thing with your personal information.
+            Trust is the foundation of the Oheo platform and includes trusting us to do the right thing with your personal information.
           </p>
 
           <div className="row">
@@ -127,7 +127,7 @@ const PrivacyControls = () => {
               <div className="resource-card">
                 <h3 className="resource-title">Privacy policy</h3>
                 <p>
-                  Learn how Shopify collects, uses, and shares your personal information.
+                  Learn how Oheo collects, uses, and shares your personal information.
                 </p>
                 <a href="#" className="resource-link">View Privacy policy</a>
               </div>
@@ -138,7 +138,7 @@ const PrivacyControls = () => {
               <div className="resource-card">
                 <h3 className="resource-title">Transparency Report</h3>
                 <p>
-                  Learn how Shopify safeguards your personal information.
+                  Learn how Oheo safeguards your personal information.
                 </p>
                 <a href="#" className="resource-link">View Transparency Report</a>
               </div>
@@ -149,7 +149,7 @@ const PrivacyControls = () => {
               <div className="resource-card">
                 <h3 className="resource-title">Legal requests for information</h3>
                 <p>
-                  Learn how Shopify balances legal obligations when a third party wants to request information that Shopify holds.
+                  Learn how Oheo balances legal obligations when a third party wants to request information that Oheo holds.
                 </p>
                 <a href="#" className="resource-link">View legal request guidelines</a>
               </div>

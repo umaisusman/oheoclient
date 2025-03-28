@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../HomePageNav/HomePageNav";
@@ -15,8 +15,25 @@ import ProductFeatures from "../ProductFeactres/ProductFeactures";
 import IntegrationsPage from "../integrations/integrations";
 import PaymentPlansSection from "../PaymentPlans/paymentPlans";
 import OheoHubLanding from "../onHub/onhub";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Element } from "react-scroll";
 
 export default function HeroSection() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash === '#payment-plans') {
+      const element = document.getElementById('payment-plans');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
+  const handleNavigate = () => {
+    navigate("/login");
+  }
   return (
     <div>
       <Navbar />
@@ -35,11 +52,11 @@ export default function HeroSection() {
                 <button className="btn  px-3 px-md-4 py-2" style={{
                   backgroundColor: "#351F51",
                   color: "white"
-                }}>Get Started</button>
+                }} onClick={handleNavigate}>Get Started</button>
                 <button className="btn  px-3 px-md-4 py-2" style={{
                   backgroundColor: "#6B3FA0",
                   color: "white"
-                }}>Learn More</button>
+                }} onClick={handleNavigate}>Learn More</button>
               </div>
             </div>
           </div>
@@ -93,7 +110,10 @@ export default function HeroSection() {
       <OheoStoreSetup />
       <ProductFeatures />
       <IntegrationsPage />
-      <PaymentPlansSection />
+      <Element name="payment-plans">
+        <PaymentPlansSection />
+      </Element>
+
       <OheoHubLanding/>
 
       <style jsx>{`

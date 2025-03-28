@@ -7,6 +7,7 @@ import Navbar from "../../Components/Navbar/Navbar"
 import { Home, ShoppingBag, Package, Users, Store, ChevronDown, X, Settings, Menu } from "lucide-react"
 import PricingCards from "../../Components/pricingCard/PricingCard"
 import { useNavigate } from "react-router-dom"
+import "./payment.css"
 
 const PricingPlans = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -65,7 +66,7 @@ const PricingPlans = () => {
                             { icon: Users, label: "Customers", hasDropdown: true },
                             { icon: Store, label: "Online Store" }
                         ].map((item, index) => (
-                            <a key={index} className="nav-link d-flex align-items-center justify-content-between gap-2 mb-3" href="#">
+                            <a key={index} className="nav-links d-flex align-items-center justify-content-between gap-2 mb-3 text-decoration-none" href="#">
                                 <div className="d-flex align-items-center gap-2">
                                     <item.icon size={18} /> {item.label}
                                 </div>

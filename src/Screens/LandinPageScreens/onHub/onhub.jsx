@@ -105,12 +105,12 @@ export default function OheoHubLanding() {
               </li>
               <li className="mb-2">
                 <a href="#" className="text-white text-decoration-none">
-                  Shopify Academy
+                  Oheo Academy
                 </a>
               </li>
               <li className="mb-2">
                 <a href="#" className="text-white text-decoration-none">
-                  Shopify Community
+                  Oheo Community
                 </a>
               </li>
             </ul>

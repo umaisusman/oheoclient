@@ -14,9 +14,17 @@ import {
   Search,
   BarChart,
   Share2,
+  Store,
+  TrafficCone,
+  Package,
 } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import './HomePageNav.css'
+import { Link as ScrollLink } from "react-scroll";
+import { ArtTrackSharp, Atm, BusinessOutlined, BusinessTwoTone, Payment, Sell } from "@mui/icons-material"
+import { FaGlobeAsia } from "react-icons/fa"
+import { CardChecklist, Chat, Globe, Instagram, People, PeopleFill, Person } from "react-bootstrap-icons"
+import { Card } from "react-bootstrap"
 
 export default function ShopifyNavbar() {
   const navigate = useNavigate()
@@ -24,34 +32,66 @@ export default function ShopifyNavbar() {
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false)
   const [isWhatsNewOpen, setIsWhatsNewOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [timeoutId, setTimeoutId] = useState(null)
 
-  const toggleResources = () => {
-    setIsResourcesOpen(!isResourcesOpen)
-    setIsSolutionsOpen(false)
-    setIsWhatsNewOpen(false)
+  const handleMouseEnter = (type) => {
+    clearTimeout(timeoutId)
+    if (isMobile) return
+
+    setIsResourcesOpen(type === 'resources')
+    setIsSolutionsOpen(type === 'solutions')
+    setIsWhatsNewOpen(type === 'whatsnew')
+  }
+
+  const handleMouseLeave = (type) => {
+    if (isMobile) return
+
+    const id = setTimeout(() => {
+      setIsResourcesOpen(false)
+      setIsSolutionsOpen(false)
+      setIsWhatsNewOpen(false)
+    }, 200)
+    setTimeoutId(id)
+  }
+
+  const handleDropdownMouseEnter = () => {
+    clearTimeout(timeoutId)
+  }
+
+  const handleDropdownMouseLeave = () => {
+    const id = setTimeout(() => {
+      setIsResourcesOpen(false)
+      setIsSolutionsOpen(false)
+      setIsWhatsNewOpen(false)
+    }, 200)
+    setTimeoutId(id)
   }
 
   const handleLoginClick = () => navigate("/Login")
   const handleMockClick = () => navigate("/mockup")
 
-  const toggleSolutions = () => {
-    setIsSolutionsOpen(!isSolutionsOpen)
-    setIsResourcesOpen(false)
-    setIsWhatsNewOpen(false)
-  }
-
-  const toggleWhatsNew = () => {
-    setIsWhatsNewOpen(!isWhatsNewOpen)
-    setIsResourcesOpen(false)
-    setIsSolutionsOpen(false)
-  }
-
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 992
+      setIsMobile(mobile)
+      setIsResourcesOpen(false)
+      setIsSolutionsOpen(false)
+      setIsWhatsNewOpen(false)
+      if (!mobile) setIsMobileMenuOpen(false)
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       const navbarElement = document.getElementById("navbar-wrapper")
-      if (navbarElement && !navbarElement.contains(event.target)) {
+      if (navbarElement && !navbarElement.contains(event.target) && isMobile) {
         setIsResourcesOpen(false)
         setIsSolutionsOpen(false)
         setIsWhatsNewOpen(false)
@@ -60,19 +100,7 @@ export default function ShopifyNavbar() {
 
     document.addEventListener("mousedown", handleClickOutside)
     return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsResourcesOpen(false)
-      setIsSolutionsOpen(false)
-      setIsWhatsNewOpen(false)
-      if (window.innerWidth >= 992) setIsMobileMenuOpen(false)
-    }
-
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+  }, [isMobile])
 
   return (
     <>
@@ -243,31 +271,44 @@ export default function ShopifyNavbar() {
 
               <div className={`oheo-navbar-collapse ${isMobileMenuOpen ? "show" : ""}`} id="oheoNavbarNav">
                 <ul className="oheo-navbar-nav mb-0">
-                  <li className="oheo-nav-item">
+                  <li className="oheo-nav-item"
+                    onMouseEnter={() => handleMouseEnter('solutions')}
+                    onMouseLeave={() => handleMouseLeave('solutions')}
+                  >
                     <a
                       className={`oheo-nav-link ${isSolutionsOpen ? "border-bottom border-black" : ""}`}
                       href="#"
-                      onClick={(e) => { e.preventDefault(); toggleSolutions() }}
+                      onClick={(e) => isMobile && e.preventDefault()}
                       style={{ color: "black" }}
                     >
                       <ShoppingBag className="me-1" size={18} color="black" />
-                      <span style={{ color: "black" }}>Products</span>
+                      <span style={{ color: "black" }}>Solutions</span>
                       <ChevronDown className={`ms-1 oheo-chevron-icon ${isSolutionsOpen ? "oheo-chevron-rotate" : ""}`} size={18} color="black" />
                     </a>
                   </li>
 
                   <li className="oheo-nav-item">
-                    <a className="oheo-nav-link" href="#" style={{ color: "black" }}>
+                    <ScrollLink
+                      to="payment-plans"
+                      smooth={true}
+                      duration={500}
+                      offset={-70}
+                      className="oheo-nav-link"
+                      style={{ color: "black", cursor: "pointer" }}
+                    >
                       <BarChart className="me-1" size={18} color="black" />
                       <span style={{ color: "black" }}>Pricing</span>
-                    </a>
+                    </ScrollLink>
                   </li>
 
-                  <li className="oheo-nav-item">
+                  <li className="oheo-nav-item"
+                    onMouseEnter={() => handleMouseEnter('resources')}
+                    onMouseLeave={() => handleMouseLeave('resources')}
+                  >
                     <a
                       className={`oheo-nav-link ${isResourcesOpen ? "border-bottom border-black" : ""}`}
                       href="#"
-                      onClick={(e) => { e.preventDefault(); toggleResources() }}
+                      onClick={(e) => isMobile && e.preventDefault()}
                       style={{ color: "black" }}
                     >
                       <BookOpen className="me-1" size={18} color="black" />
@@ -283,11 +324,14 @@ export default function ShopifyNavbar() {
                     </a>
                   </li>
 
-                  <li className="oheo-nav-item">
+                  <li className="oheo-nav-item"
+                    onMouseEnter={() => handleMouseEnter('whatsnew')}
+                    onMouseLeave={() => handleMouseLeave('whatsnew')}
+                  >
                     <a
                       className={`oheo-nav-link ${isWhatsNewOpen ? "border-bottom border-black" : ""}`}
                       href="#"
-                      onClick={(e) => { e.preventDefault(); toggleWhatsNew() }}
+                      onClick={(e) => isMobile && e.preventDefault()}
                       style={{ color: "black" }}
                     >
                       <Sparkles className="me-1" size={18} color="black" />
@@ -329,113 +373,356 @@ export default function ShopifyNavbar() {
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
               position: window.innerWidth > 991 ? "absolute" : "relative",
             }}
+            onMouseEnter={handleDropdownMouseEnter}
+            onMouseLeave={handleDropdownMouseLeave}
           >
             <div className="container py-5">
-              <div className="row">
-                <div className="col-md-4 mb-4 mb-md-0">
-                  <div className="d-flex align-items-center mb-4">
-                    <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
-                      <HelpCircle size={20} color="white" />
+              {isSolutionsOpen && (
+                <div className="row">
+                  <div className="col-md-4 mb-4 mb-md-0">
+                    <div className="d-flex align-items-center mb-4">
+                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                        <ShoppingBag size={20} color="white" />
+                      </div>
+                      <h3 className="fs-4 fw-medium mb-0">Start</h3>
                     </div>
-                    <h3 className="fs-4 fw-medium mb-0">Help and support</h3>
-                  </div>
-                  <div className="mb-4 oheo-dropdown-item">
-                    <h4 className="fs-5 fw-medium mb-1">
-                      <div className="d-flex align-items-center">
-                        <HelpCircle size={16} className="me-2" color="white" />
-                        Help and support
-                      </div>
-                    </h4>
-                    <p className="mb-0">Get 24/7 support</p>
-                  </div>
-                  <div className="mb-4 oheo-dropdown-item">
-                    <h4 className="fs-5 fw-medium mb-1">
-                      <div className="d-flex align-items-center">
-                        <BookOpen size={16} className="me-2" color="white" />
-                        How-to guides
-                      </div>
-                    </h4>
-                    <p className="mb-0">Read in-depth business guides</p>
-                  </div>
-                  <div className="mb-4 oheo-dropdown-item">
-                    <h4 className="fs-5 fw-medium mb-1">
-                      <div className="d-flex align-items-center">
-                        <GraduationCap size={16} className="me-2" color="white" />
-                        Business courses
-                      </div>
-                    </h4>
-                    <p className="mb-0">Learn from proven experts</p>
-                  </div>
-                </div>
-
-                <div className="col-md-4 mb-4 mb-md-0">
-                  <div className="d-flex align-items-center mb-4">
-                    <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
-                      <Pencil size={20} color="white" />
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Sparkles size={16} className="me-2" color="white" />
+                          Start your business
+                        </div>
+                      </h4>
+                      <p className="mb-0">Build your brand</p>
                     </div>
-                    <h3 className="fs-4 fw-medium mb-0">Popular topics</h3>
-                  </div>
-                  <div className="mb-4 oheo-dropdown-item">
-                    <h4 className="fs-5 fw-medium mb-1">
-                      <div className="d-flex align-items-center">
-                        <Info size={16} className="me-2" color="white" />
-                        What is Oheo?
-                      </div>
-                    </h4>
-                    <p className="mb-0">How our commerce platform works</p>
-                  </div>
-                  <div className="mb-4 oheo-dropdown-item">
-                    <h4 className="fs-5 fw-medium mb-1">
-                      <div className="d-flex align-items-center">
-                        <Sparkles size={16} className="me-2" color="white" />
-                        Oheo Editions
-                      </div>
-                    </h4>
-                    <p className="mb-0">New, innovative Shopify products</p>
-                  </div>
-                  <div className="mb-4 oheo-dropdown-item">
-                    <h4 className="fs-5 fw-medium mb-1">
-                      <div className="d-flex align-items-center">
-                        <Users size={16} className="me-2" color="white" />
-                        Founder stories
-                      </div>
-                    </h4>
-                    <p className="mb-0">Learn from successful merchants</p>
-                  </div>
-                </div>
-
-                <div className="col-md-4">
-                  <div className="pt-4 pt-md-5">
                     <div className="mb-4 oheo-dropdown-item">
                       <h4 className="fs-5 fw-medium mb-1">
                         <div className="d-flex align-items-center">
                           <BarChart size={16} className="me-2" color="white" />
-                          Marketing
+                          Create Your Website
                         </div>
                       </h4>
-                      <p className="mb-0">Build a marketing plan</p>
+                      <p className="mb-0">Online store editor</p>
                     </div>
                     <div className="mb-4 oheo-dropdown-item">
                       <h4 className="fs-5 fw-medium mb-1">
                         <div className="d-flex align-items-center">
-                          <Search size={16} className="me-2" color="white" />
-                          Ecommerce SEO
+                          <Store size={16} className="me-2" color="white" />
+                          Customize your store
                         </div>
                       </h4>
-                      <p className="mb-0">Improve your search ranking</p>
+                      <p className="mb-0">Store themes</p>
                     </div>
                     <div className="mb-4 oheo-dropdown-item">
                       <h4 className="fs-5 fw-medium mb-1">
                         <div className="d-flex align-items-center">
-                          <Share2 size={16} className="me-2" color="white" />
-                          Social media strategy
+                          <BusinessTwoTone size={16} className="me-2" color="white" />
+                          Find business apps
                         </div>
                       </h4>
-                      <p className="mb-0">Turn social into sales</p>
+                      <p className="mb-0">Shopify app store</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <FaGlobeAsia size={16} className="me-2" color="white" />
+                          Own your site domain
+                        </div>
+                      </h4>
+                      <p className="mb-0">Domains & hosting</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <FaGlobeAsia size={16} className="me-2" color="white" />
+                          Explore free business tools
+                        </div>
+                      </h4>
+                      <p className="mb-0">Tools to run your business</p>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4 mb-4 mb-md-0">
+                    <div className="d-flex align-items-center mb-4">
+                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                        <Share2 size={20} color="white" />
+                      </div>
+                      <h3 className="fs-4 fw-medium mb-0">Sell</h3>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <People size={16} className="me-2" color="white" />
+                          Check your customers
+                        </div>
+                      </h4>
+                      <p className="mb-0">Sell online or in person</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <ArtTrackSharp size={16} className="me-2" color="white" />
+                          Check out customers
+                        </div>
+                      </h4>
+                      <p className="mb-0">World-class checkout</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Sell size={16} className="me-2" color="white" />
+                          Sell Online
+                        </div>
+                      </h4>
+                      <p className="mb-0">Grow Your Business Online</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Globe size={16} className="me-2" color="white" />
+                          Sell Across Channels
+                        </div>
+                      </h4>
+                      <p className="mb-0">Reach millions of shoppers and boost sales</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Person size={16} className="me-2" color="white" />
+                          Sell in Person
+                        </div>
+                      </h4>
+                      <p className="mb-0">Point of Sale (POS)</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Payment size={16} className="me-2" color="white" />
+                          Accept online payments
+                        </div>
+                      </h4>
+                      <p className="mb-0">Set up forms of payment</p>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4">
+                    <div className="d-flex align-items-center mb-4">
+                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                        <Users size={20} color="white" />
+                      </div>
+                      <h3 className="fs-4 fw-medium mb-0">Market</h3>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <BusinessOutlined size={16} className="me-2" color="white" />
+                          Market your business.
+                        </div>
+                      </h4>
+                      <p className="mb-0">Tailored business solutions</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Instagram size={16} className="me-2" color="white" />
+                          Market across social.
+                        </div>
+                      </h4>
+                      <p className="mb-0">Scale your business worldwide</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Chat size={16} className="me-2" color="white" />
+                          Chat with customers.
+                        </div>
+                      </h4>
+                      <p className="mb-0">Shopify Inbox</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <People size={16} className="me-2" color="white" />
+                          Nurture customers
+                        </div>
+                      </h4>
+                      <p className="mb-0">Shopify Email</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <PeopleFill size={16} className="me-2" color="white" />
+                          Know your audience.
+                        </div>
+                      </h4>
+                      <p className="mb-0">Gain customer insights</p>
+                    </div>
+
+                  </div>
+                </div>
+              )}
+
+              {isResourcesOpen && (
+                <div className="row">
+                  <div className="col-md-4 mb-4 mb-md-0">
+                    <div className="d-flex align-items-center mb-4">
+                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                        <HelpCircle size={20} color="white" />
+                      </div>
+                      <h3 className="fs-4 fw-medium mb-0">Help and support</h3>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <HelpCircle size={16} className="me-2" color="white" />
+                          Help and support
+                        </div>
+                      </h4>
+                      <p className="mb-0">Get 24/7 support</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <BookOpen size={16} className="me-2" color="white" />
+                          How-to guides
+                        </div>
+                      </h4>
+                      <p className="mb-0">Read in-depth business guides</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <GraduationCap size={16} className="me-2" color="white" />
+                          Business courses
+                        </div>
+                      </h4>
+                      <p className="mb-0">Learn from proven experts</p>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4 mb-4 mb-md-0">
+                    <div className="d-flex align-items-center mb-4">
+                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                        <Pencil size={20} color="white" />
+                      </div>
+                      <h3 className="fs-4 fw-medium mb-0">Popular topics</h3>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Info size={16} className="me-2" color="white" />
+                          What is Oheo?
+                        </div>
+                      </h4>
+                      <p className="mb-0">How our commerce platform works</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Sparkles size={16} className="me-2" color="white" />
+                          Oheo Editions
+                        </div>
+                      </h4>
+                      <p className="mb-0">New, innovative Shopify products</p>
+                    </div>
+                    <div className="mb-4 oheo-dropdown-item">
+                      <h4 className="fs-5 fw-medium mb-1">
+                        <div className="d-flex align-items-center">
+                          <Users size={16} className="me-2" color="white" />
+                          Founder stories
+                        </div>
+                      </h4>
+                      <p className="mb-0">Learn from successful merchants</p>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4">
+                    <div className="pt-4 pt-md-5">
+                      <div className="mb-4 oheo-dropdown-item">
+                        <h4 className="fs-5 fw-medium mb-1">
+                          <div className="d-flex align-items-center">
+                            <BarChart size={16} className="me-2" color="white" />
+                            Marketing
+                          </div>
+                        </h4>
+                        <p className="mb-0">Build a marketing plan</p>
+                      </div>
+                      <div className="mb-4 oheo-dropdown-item">
+                        <h4 className="fs-5 fw-medium mb-1">
+                          <div className="d-flex align-items-center">
+                            <Search size={16} className="me-2" color="white" />
+                            Ecommerce SEO
+                          </div>
+                        </h4>
+                        <p className="mb-0">Improve your search ranking</p>
+                      </div>
+                      <div className="mb-4 oheo-dropdown-item">
+                        <h4 className="fs-5 fw-medium mb-1">
+                          <div className="d-flex align-items-center">
+                            <Share2 size={16} className="me-2" color="white" />
+                            Social media strategy
+                          </div>
+                        </h4>
+                        <p className="mb-0">Turn social into sales</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
+
+              {isWhatsNewOpen && (
+                <div className="row">
+                  <div className="col-md-4 mb-4 mb-md-0">
+                    <div className="d-flex align-items-center mb-2">
+                      <div
+                        className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container"
+                        style={{ width: 40, height: 40 }}
+                      >
+                        <CardChecklist size={20} color="white" />
+                      </div>
+                      <div>
+                        <h3 className="fs-4 fw-medium mb-0">Changelog</h3>
+                        <p className="mb-0 text-white">
+                          Your source for recent updates</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div className="col-md-4 mb-4 mb-md-0">
+                    <div className="d-flex align-items-center mb-2">
+                      <div
+                        className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container"
+                        style={{ width: 40, height: 40 }}
+                      >
+                        <ShoppingBag size={20} color="white" />
+                      </div>
+                      <div>
+                        <h3 className="fs-4 fw-medium mb-0">Winter ’25 Edition.</h3>
+                        <p className="mb-0 text-white">New reporting capabilities</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div className="col-md-4 mb-4 mb-md-0">
+                    <div className="d-flex align-items-center mb-2">
+                      <div
+                        className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container"
+                        style={{ width: 40, height: 40 }}
+                      >
+                        <Package size={20} color="white" />
+                      </div>
+                      <div>
+                        <h3 className="fs-4 fw-medium mb-0">All Editions.</h3>
+                        <p className="mb-0 text-white">
+                        All company news and press releases</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              )}
             </div>
           </div>
         )}

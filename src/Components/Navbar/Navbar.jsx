@@ -35,7 +35,7 @@ export default function Navbar() {
 
   return (
     <header
-      className="navbar navbar-expand-lg border-bottom px-4 py-2 w-100"
+      className="navbars navbar-expand-lg border-bottom px-4 py-2 w-100"
       style={{ backgroundColor: "#FFFFFF", zIndex: 1050 }}
     >
       <div className="container-fluid d-flex justify-content-between align-items-center">

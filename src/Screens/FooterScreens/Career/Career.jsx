@@ -81,7 +81,7 @@ const Career = () => {
             <div className="col-md-10 text-center">
               <h1 className="display-4 fw-bold mb-4">Not everyone can do this</h1>
               <p className="lead mb-4">
-                Shopify is constantly growing and evolving, which lets us design opportunities for
+                Oheo is constantly growing and evolving, which lets us design opportunities for
                 every stage of your career. Find the right role for your experience, or the one
                 that challenges you in exciting new ways.
               </p>
@@ -109,7 +109,7 @@ const Career = () => {
 
           <div className="row mt-5">
             <div className="col-md-6">
-              <p className="text-uppercase fw-bold mb-2">ABOUT SHOPIFY</p>
+              <p className="text-uppercase fw-bold mb-2">ABOUT Oheo</p>
               <h3 className="fw-bold mb-4">Life-defining work for you—and entrepreneurs</h3>
               <p className="mb-4">
                 We're building a 100-year company that helps the next generation of entrepreneurs, 
@@ -128,7 +128,7 @@ const Career = () => {
               
               <p className="mb-0">
                 Our work environment gives you the freedom to do your best work and the support to 
-                grow. At Shopify, we're committed to building a diverse and inclusive workplace where 
+                grow. At Oheo, we're committed to building a diverse and inclusive workplace where 
                 everyone feels they belong.
               </p>
             </div>
