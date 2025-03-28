@@ -8,8 +8,9 @@ import "./Navbar.css"
 import { useNavigate } from "react-router-dom"
 import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
 import PaymentPlansSectionthird from "../paymentSelectionthird/paymentSelectionthird"
-import Footer from "../NewFooter/NewFooter"
+import Footer from "../../Screens/LandinPageScreens/onHub/onhub"
 import videoFrame from "../../images/video transparent frame.png";
+import ShopifyNavbar from "../../Screens/LandinPageScreens/HomePageNav/HomePageNav"
 
 export default function LandingPageNav() {
 
@@ -24,27 +25,7 @@ export default function LandingPageNav() {
 
   return (
     <div >
-       <Navbar expand="lg" className="py-3">
-        <Container>
-        <Navbar.Brand href="#" className="d-flex align-items-center">
-  <span className="fw-bold">oheo</span>
-</Navbar.Brand>
-
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mx-auto">
-              <Nav.Link href="#" className="mx-2">Solutions</Nav.Link>
-              <Nav.Link href="#" className="mx-2">Pricing</Nav.Link>
-              <Nav.Link href="#" className="mx-2">Company</Nav.Link>
-              <Nav.Link href="#" className="mx-2">Resources</Nav.Link>
-            </Nav>
-            <div className="d-flex align-items-center">
-              <Button variant="dark" size="sm" className="me-2 rounded-pill px-3" onClick={handletryNav}>Get Started</Button>
-              <Button variant="outline-dark" size="sm" className="rounded-pill px-3" onClick={handletrylogin}>Sign in</Button>
-            </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <ShopifyNavbar/>
 
       <Container
   className="py-5"

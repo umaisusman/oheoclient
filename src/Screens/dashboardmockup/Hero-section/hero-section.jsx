@@ -4,7 +4,7 @@ import WhyChooseUs from "../../../Components/why-choose-us/why-choose-us";
 import FeaturesSection from "../../../Components/feature-section/feactureSection";
 import TestimonialSection from "../../../Components/Testimonial/Testimonial";
 import BusinessBanner from "../../../Components/business-banner/business-banner";
-import Footer from "../../../Components/NewFooter/NewFooter";
+import Footer from "../../../Screens/LandinPageScreens/onHub/onhub";
 import { useNavigate } from "react-router-dom";
 import ShopifyNavbar from "../../LandinPageScreens/HomePageNav/HomePageNav";
 
