@@ -79,15 +79,15 @@ const Career = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-10 text-center">
-              <h1 className="display-4 fw-bold mb-4">Not everyone can do this</h1>
-              <p className="lead mb-4">
+              <h1 className="display-4 fw-bold mb-4 text-white">Not everyone can do this</h1>
+              <p className="lead mb-4 text-white">
                 Oheo is constantly growing and evolving, which lets us design opportunities for
                 every stage of your career. Find the right role for your experience, or the one
                 that challenges you in exciting new ways.
               </p>
               <div className="d-flex justify-content-center gap-3">
-                <button className="btn btn-black">EXPLORE JOBS</button>
-                <button className="btn btn-outline-black">LEARN MORE</button>
+                <button className="bt btn-black">EXPLORE JOBS</button>
+                <button className="bt btn-outline-black">LEARN MORE</button>
               </div>
             </div>
           </div>
