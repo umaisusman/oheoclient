@@ -69,7 +69,7 @@ export default function ShopifyNavbar() {
   }
 
   const handleLoginClick = () => navigate("/Login")
-  const handleMockClick = () => navigate("/mockup")
+  const handleMockClick = () => navigate("/login")
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
 
