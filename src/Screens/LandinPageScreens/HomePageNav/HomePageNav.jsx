@@ -182,6 +182,7 @@ export default function ShopifyNavbar() {
           height: 100%;
           margin: 0 0.5rem;
           color: black !important;
+          
         }
 
         .oheo-nav-item:hover { background-color: rgba(53, 31, 81, 0.1); border-radius: 4px; }
@@ -372,6 +373,7 @@ export default function ShopifyNavbar() {
               backgroundColor: "#351F51",
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
               position: window.innerWidth > 991 ? "absolute" : "relative",
+              cursor:'pointer',
             }}
             onMouseEnter={handleDropdownMouseEnter}
             onMouseLeave={handleDropdownMouseLeave}
