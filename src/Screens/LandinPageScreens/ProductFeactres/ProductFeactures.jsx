@@ -12,6 +12,7 @@ import {
   FilterCircleFill,
   FunnelFill,
 } from "react-bootstrap-icons"
+import './product.css'
 
 const ProductFeatures = () => {
   return (
@@ -60,35 +61,42 @@ const ProductFeatures = () => {
               </div>
 
               <div className="mb-4">
-                <Tabs defaultActiveKey="date" className="mb-3 small">
-                  <Tab
-                    eventKey="date"
-                    title={
-                      <span>
-                        <Calendar3 className="me-1" size={14} />
-                        Date
-                      </span>
-                    }
-                  />
-                  <Tab
-                    eventKey="mail"
-                    title={
-                      <span>
-                        <Envelope className="me-1" size={14} />
-                        Mail
-                      </span>
-                    }
-                  />
-                  <Tab
-                    eventKey="console"
-                    title={
-                      <span>
-                        <Terminal className="me-1" size={14} />
-                        Console
-                      </span>
-                    }
-                  />
-                </Tabs>
+              <Tabs defaultActiveKey="date" className="mb-3 small" id="custom-tabs">
+  <Tab
+    eventKey="date"
+    title={
+      <span>
+        <Calendar3 className="me-1" size={14} />
+        Date
+      </span>
+    }
+  >
+    <div className="tab-content-box">Date Content</div>
+  </Tab>
+  <Tab
+    eventKey="mail"
+    title={
+      <span>
+        <Envelope className="me-1" size={14} />
+        Mail
+      </span>
+    }
+  >
+    <div className="tab-content-box">Mail Content</div>
+  </Tab>
+  <Tab
+    eventKey="console"
+    title={
+      <span>
+        <Terminal className="me-1" size={14} />
+        Console
+      </span>
+    }
+  >
+    <div className="tab-content-box bg-dark text-white">Console Content</div>
+  </Tab>
+</Tabs>
+
               </div>
 
               <div className="bg-light p-3 rounded">

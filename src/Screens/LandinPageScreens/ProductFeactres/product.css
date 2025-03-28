@@ -1,0 +1,19 @@
+#custom-tabs .nav-link {
+    background-color: #f8f9fa !important; /* Light gray background */
+    color: #000 !important; /* Black text */
+    border: 1px solid #ddd !important;
+    border-radius: 5px !important;
+  }
+  
+  #custom-tabs .nav-link.active {
+    background-color: #7c5cfc !important; /* Purple background for active tab */
+    color: white !important;
+  }
+  
+  .tab-content-box {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa; /* Light gray background for all tabs */
+  }
+  
