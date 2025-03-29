@@ -15,16 +15,14 @@ import {
   BarChart,
   Share2,
   Store,
-  TrafficCone,
   Package,
 } from "lucide-react"
-import { Link, useNavigate } from "react-router-dom"
-import './HomePageNav.css'
-import { Link as ScrollLink } from "react-scroll";
-import { ArtTrackSharp, Atm, BusinessOutlined, BusinessTwoTone, Payment, Sell } from "@mui/icons-material"
+import { useNavigate } from "react-router-dom"
+import "./HomePageNav.css"
+import { Link as ScrollLink } from "react-scroll"
+import { ArtTrackSharp, BusinessOutlined, BusinessTwoTone, Payment, Sell } from "@mui/icons-material"
 import { FaGlobeAsia } from "react-icons/fa"
 import { CardChecklist, Chat, Globe, Instagram, People, PeopleFill, Person } from "react-bootstrap-icons"
-import { Card } from "react-bootstrap"
 
 export default function ShopifyNavbar() {
   const navigate = useNavigate()
@@ -39,9 +37,9 @@ export default function ShopifyNavbar() {
     clearTimeout(timeoutId)
     if (isMobile) return
 
-    setIsResourcesOpen(type === 'resources')
-    setIsSolutionsOpen(type === 'solutions')
-    setIsWhatsNewOpen(type === 'whatsnew')
+    setIsResourcesOpen(type === "resources")
+    setIsSolutionsOpen(type === "solutions")
+    setIsWhatsNewOpen(type === "whatsnew")
   }
 
   const handleMouseLeave = (type) => {
@@ -116,6 +114,13 @@ export default function ShopifyNavbar() {
           100% { transform: scale(1); }
         }
 
+        .oheo-navbar-wrapper {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          overflow-x: hidden;
+        }
+
         .oheo-header-nav {
           display: flex;
           flex-wrap: wrap;
@@ -125,11 +130,13 @@ export default function ShopifyNavbar() {
 
         .oheo-dropdown-animation {
           animation: oheo-slideDown 0.3s ease-out;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
         }
 
         .oheo-nav-button {
           transition: all 0.3s ease;
-          position: relative;
           overflow: hidden;
         }
 
@@ -138,22 +145,40 @@ export default function ShopifyNavbar() {
 
         .oheo-nav-link {
           transition: all 0.2s ease;
-          position: relative;
           display: flex;
+          flex-direction: column;
           align-items: center;
           height: 100%;
           text-decoration: none;
           color: black !important;
         }
 
+        .oheo-nav-link .link-content {
+          display: flex;
+          align-items: center;
+        }
+
+        .oheo-nav-link:after {
+          content: '';
+          width: 0;
+          height: 2px;
+          background-color: black;
+          transition: width 0.3s ease;
+          margin-top: 4px;
+        }
+
+        .oheo-nav-link:hover:after {
+          width: 100%;
+          background-color: #351F51;
+        }
+
         .oheo-nav-link:hover { transform: translateY(-1px); }
         .oheo-nav-link:after {
           content: '';
-          position: absolute;
           width: 0;
           height: 2px;
-          bottom: 0;
-          left: 0;
+          display: block;
+          margin-top: 2px;
           background-color: black;
           transition: width 0.3s ease;
         }
@@ -163,7 +188,9 @@ export default function ShopifyNavbar() {
         .oheo-icon-container:hover { transform: scale(1.1); }
         .oheo-dropdown-item { transition: all 0.2s ease; }
         .oheo-dropdown-item:hover { background-color: rgba(255, 255, 255, 0.1); transform: translateX(5px); }
-        .oheo-trial-button:hover { animation: oheo-pulse 1s infinite; }
+        .oheo-trial-button {
+          z-index: 1;
+        }
         .oheo-chevron-icon { transition: transform 0.3s ease; }
         .oheo-chevron-rotate { transform: rotate(180deg); }
         
@@ -182,7 +209,6 @@ export default function ShopifyNavbar() {
           height: 100%;
           margin: 0 0.5rem;
           color: black !important;
-          
         }
 
         .oheo-nav-item:hover { background-color: rgba(53, 31, 81, 0.1); border-radius: 4px; }
@@ -272,19 +298,26 @@ export default function ShopifyNavbar() {
 
               <div className={`oheo-navbar-collapse ${isMobileMenuOpen ? "show" : ""}`} id="oheoNavbarNav">
                 <ul className="oheo-navbar-nav mb-0">
-                  <li className="oheo-nav-item"
-                    onMouseEnter={() => handleMouseEnter('solutions')}
-                    onMouseLeave={() => handleMouseLeave('solutions')}
+                  <li
+                    className="oheo-nav-item"
+                    onMouseEnter={() => handleMouseEnter("solutions")}
+                    onMouseLeave={() => handleMouseLeave("solutions")}
                   >
                     <a
-                      className={`oheo-nav-link ${isSolutionsOpen ? "border-bottom border-black" : ""}`}
+                      className="oheo-nav-link"
                       href="#"
                       onClick={(e) => isMobile && e.preventDefault()}
                       style={{ color: "black" }}
                     >
-                      <ShoppingBag className="me-1" size={18} color="black" />
-                      <span style={{ color: "black" }}>Solutions</span>
-                      <ChevronDown className={`ms-1 oheo-chevron-icon ${isSolutionsOpen ? "oheo-chevron-rotate" : ""}`} size={18} color="black" />
+                      <div className="link-content">
+                        <ShoppingBag className="me-1" size={18} color="black" />
+                        <span style={{ color: "black" }}>Solutions</span>
+                        <ChevronDown
+                          className={`ms-1 oheo-chevron-icon ${isSolutionsOpen ? "oheo-chevron-rotate" : ""}`}
+                          size={18}
+                          color="black"
+                        />
+                      </div>
                     </a>
                   </li>
 
@@ -297,47 +330,65 @@ export default function ShopifyNavbar() {
                       className="oheo-nav-link"
                       style={{ color: "black", cursor: "pointer" }}
                     >
-                      <BarChart className="me-1" size={18} color="black" />
-                      <span style={{ color: "black" }}>Pricing</span>
+                      <div className="link-content">
+                        <BarChart className="me-1" size={18} color="black" />
+                        <span style={{ color: "black" }}>Pricing</span>
+                      </div>
                     </ScrollLink>
                   </li>
 
-                  <li className="oheo-nav-item"
-                    onMouseEnter={() => handleMouseEnter('resources')}
-                    onMouseLeave={() => handleMouseLeave('resources')}
+                  <li
+                    className="oheo-nav-item"
+                    onMouseEnter={() => handleMouseEnter("resources")}
+                    onMouseLeave={() => handleMouseLeave("resources")}
                   >
                     <a
-                      className={`oheo-nav-link ${isResourcesOpen ? "border-bottom border-black" : ""}`}
+                      className="oheo-nav-link"
                       href="#"
                       onClick={(e) => isMobile && e.preventDefault()}
                       style={{ color: "black" }}
                     >
-                      <BookOpen className="me-1" size={18} color="black" />
-                      <span style={{ color: "black" }}>Resources</span>
-                      <ChevronDown className={`ms-1 oheo-chevron-icon ${isResourcesOpen ? "oheo-chevron-rotate" : ""}`} size={18} color="black" />
+                      <div className="link-content">
+                        <BookOpen className="me-1" size={18} color="black" />
+                        <span style={{ color: "black" }}>Resources</span>
+                        <ChevronDown
+                          className={`ms-1 oheo-chevron-icon ${isResourcesOpen ? "oheo-chevron-rotate" : ""}`}
+                          size={18}
+                          color="black"
+                        />
+                      </div>
                     </a>
                   </li>
 
                   <li className="oheo-nav-item">
                     <a className="oheo-nav-link" href="#" style={{ color: "black" }}>
-                      <Users className="me-1" size={18} color="black" />
-                      <span style={{ color: "black" }}>Enterprise</span>
+                      <div className="link-content">
+                        <Users className="me-1" size={18} color="black" />
+                        <span style={{ color: "black" }}>Enterprise</span>
+                      </div>
                     </a>
                   </li>
 
-                  <li className="oheo-nav-item"
-                    onMouseEnter={() => handleMouseEnter('whatsnew')}
-                    onMouseLeave={() => handleMouseLeave('whatsnew')}
+                  <li
+                    className="oheo-nav-item"
+                    onMouseEnter={() => handleMouseEnter("whatsnew")}
+                    onMouseLeave={() => handleMouseLeave("whatsnew")}
                   >
                     <a
-                      className={`oheo-nav-link ${isWhatsNewOpen ? "border-bottom border-black" : ""}`}
+                      className="oheo-nav-link"
                       href="#"
                       onClick={(e) => isMobile && e.preventDefault()}
                       style={{ color: "black" }}
                     >
-                      <Sparkles className="me-1" size={18} color="black" />
-                      <span style={{ color: "black" }}>What's new</span>
-                      <ChevronDown className={`ms-1 oheo-chevron-icon ${isWhatsNewOpen ? "oheo-chevron-rotate" : ""}`} size={18} color="black" />
+                      <div className="link-content">
+                        <Sparkles className="me-1" size={18} color="black" />
+                        <span style={{ color: "black" }}>What's new</span>
+                        <ChevronDown
+                          className={`ms-1 oheo-chevron-icon ${isWhatsNewOpen ? "oheo-chevron-rotate" : ""}`}
+                          size={18}
+                          color="black"
+                        />
+                      </div>
                     </a>
                   </li>
                 </ul>
@@ -372,8 +423,8 @@ export default function ShopifyNavbar() {
               zIndex: 1000,
               backgroundColor: "#351F51",
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-              position: window.innerWidth > 991 ? "absolute" : "relative",
-              cursor:'pointer',
+              cursor: "pointer",
+              overflow: "hidden",
             }}
             onMouseEnter={handleDropdownMouseEnter}
             onMouseLeave={handleDropdownMouseLeave}
@@ -383,7 +434,10 @@ export default function ShopifyNavbar() {
                 <div className="row">
                   <div className="col-md-4 mb-4 mb-md-0">
                     <div className="d-flex align-items-center mb-4">
-                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                      <div
+                        className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container"
+                        style={{ width: 40, height: 40 }}
+                      >
                         <ShoppingBag size={20} color="white" />
                       </div>
                       <h3 className="fs-4 fw-medium mb-0">Start</h3>
@@ -446,7 +500,10 @@ export default function ShopifyNavbar() {
 
                   <div className="col-md-4 mb-4 mb-md-0">
                     <div className="d-flex align-items-center mb-4">
-                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                      <div
+                        className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container"
+                        style={{ width: 40, height: 40 }}
+                      >
                         <Share2 size={20} color="white" />
                       </div>
                       <h3 className="fs-4 fw-medium mb-0">Sell</h3>
@@ -509,7 +566,10 @@ export default function ShopifyNavbar() {
 
                   <div className="col-md-4">
                     <div className="d-flex align-items-center mb-4">
-                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                      <div
+                        className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container"
+                        style={{ width: 40, height: 40 }}
+                      >
                         <Users size={20} color="white" />
                       </div>
                       <h3 className="fs-4 fw-medium mb-0">Market</h3>
@@ -559,7 +619,6 @@ export default function ShopifyNavbar() {
                       </h4>
                       <p className="mb-0">Gain customer insights</p>
                     </div>
-
                   </div>
                 </div>
               )}
@@ -568,7 +627,10 @@ export default function ShopifyNavbar() {
                 <div className="row">
                   <div className="col-md-4 mb-4 mb-md-0">
                     <div className="d-flex align-items-center mb-4">
-                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                      <div
+                        className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container"
+                        style={{ width: 40, height: 40 }}
+                      >
                         <HelpCircle size={20} color="white" />
                       </div>
                       <h3 className="fs-4 fw-medium mb-0">Help and support</h3>
@@ -604,7 +666,10 @@ export default function ShopifyNavbar() {
 
                   <div className="col-md-4 mb-4 mb-md-0">
                     <div className="d-flex align-items-center mb-4">
-                      <div className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container" style={{ width: 40, height: 40 }}>
+                      <div
+                        className="rounded-circle border border-white p-2 me-3 d-flex align-items-center justify-content-center oheo-icon-container"
+                        style={{ width: 40, height: 40 }}
+                      >
                         <Pencil size={20} color="white" />
                       </div>
                       <h3 className="fs-4 fw-medium mb-0">Popular topics</h3>
@@ -684,12 +749,10 @@ export default function ShopifyNavbar() {
                       </div>
                       <div>
                         <h3 className="fs-4 fw-medium mb-0">Changelog</h3>
-                        <p className="mb-0 text-white">
-                          Your source for recent updates</p>
+                        <p className="mb-0 text-white">Your source for recent updates</p>
                       </div>
                     </div>
                   </div>
-
 
                   <div className="col-md-4 mb-4 mb-md-0">
                     <div className="d-flex align-items-center mb-2">
@@ -700,12 +763,11 @@ export default function ShopifyNavbar() {
                         <ShoppingBag size={20} color="white" />
                       </div>
                       <div>
-                        <h3 className="fs-4 fw-medium mb-0">Winter ’25 Edition.</h3>
+                        <h3 className="fs-4 fw-medium mb-0">Winter '25 Edition.</h3>
                         <p className="mb-0 text-white">New reporting capabilities</p>
                       </div>
                     </div>
                   </div>
-
 
                   <div className="col-md-4 mb-4 mb-md-0">
                     <div className="d-flex align-items-center mb-2">
@@ -717,12 +779,10 @@ export default function ShopifyNavbar() {
                       </div>
                       <div>
                         <h3 className="fs-4 fw-medium mb-0">All Editions.</h3>
-                        <p className="mb-0 text-white">
-                        All company news and press releases</p>
+                        <p className="mb-0 text-white">All company news and press releases</p>
                       </div>
                     </div>
                   </div>
-
                 </div>
               )}
             </div>
@@ -732,3 +792,4 @@ export default function ShopifyNavbar() {
     </>
   )
 }
+
