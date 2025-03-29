@@ -68,6 +68,7 @@ export default function ShopifyNavbar() {
 
   const handleLoginClick = () => navigate("/Login")
   const handleMockClick = () => navigate("/login")
+  const handleEnterPriseClick = () => navigate("/mockup")
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
 
@@ -364,7 +365,7 @@ export default function ShopifyNavbar() {
                     <a className="oheo-nav-link" href="#" style={{ color: "black" }}>
                       <div className="link-content">
                         <Users className="me-1" size={18} color="black" />
-                        <span style={{ color: "black" }}>Enterprise</span>
+                        <span style={{ color: "black" }} onClick={handleEnterPriseClick}>Enterprise</span>
                       </div>
                     </a>
                   </li>
